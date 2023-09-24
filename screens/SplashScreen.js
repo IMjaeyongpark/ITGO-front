@@ -4,14 +4,10 @@ import { useNavigation,useIsFocused } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 
-type NavigationParams = {
-    Start: undefined; // 'Register' 스크린에 전달할 파라미터가 있다면 여기에 정의
-    Splash:undefined; 
-  };
   
-const SplashScreen: React.FC = () => {
+const SplashScreen= () => {
 
-  const navigation = useNavigation<NativeStackNavigationProp<NavigationParams>>();
+  const navigation = useNavigation();
 const [showLogo, setShowLogo] = useState(true);
   const isFocused = useIsFocused();
 
@@ -40,7 +36,7 @@ const [showLogo, setShowLogo] = useState(true);
     <View style={styles.container}>
       {showLogo && (
         <Image
-          source={require('../assets/logo.png')} // 로고 이미지 경로로 수정하세요.
+          source={require('../assets/icon.png')} // 로고 이미지 경로로 수정하세요.
           style={styles.logo}
         />
       )}
