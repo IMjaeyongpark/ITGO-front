@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { useNavigation,useIsFocused } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 
   
-const SplashScreen= () => {
+const SplashScreen = () => {
 
   const navigation = useNavigation();
 const [showLogo, setShowLogo] = useState(true);

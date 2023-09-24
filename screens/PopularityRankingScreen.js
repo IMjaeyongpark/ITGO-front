@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Button } from 'react-native';
 
 
 // MainScreen 컴포넌트
-const PopularityRankingScreen= () => {
+const PopularityRankingScreen = () => {
   return (
     <View style={styles.container}>
       <Text>메인 페이지</Text>

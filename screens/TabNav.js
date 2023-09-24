@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import MainScreen from './MainScreen';
 import PopularityRankingScreen from './PopularityRankingScreen';
 
