@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { useNavigation,useIsFocused } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 
-type NavigationParams = {
-    Start: undefined; // 'Register' 스크린에 전달할 파라미터가 있다면 여기에 정의
-    Splash:undefined; 
-  };
   
-const SplashScreen: React.FC = () => {
+const SplashScreen = () => {
 
-  const navigation = useNavigation<NativeStackNavigationProp<NavigationParams>>();
+  const navigation = useNavigation();
 const [showLogo, setShowLogo] = useState(true);
   const isFocused = useIsFocused();
 
