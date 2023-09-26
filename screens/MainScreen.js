@@ -1,18 +1,23 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import { SplashScreen, Stack } from 'expo-router';
+import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 
 import { NavigationContainer } from '@react-navigation/native';
-import TabNavigation from './TabNav';
 
-
+const Tab = createBottomTabNavigator();
+SplashScreen.preventAutoHideAsync();
 // MainScreen 컴포넌트
 const MainScreen = () => {
 
   return (
-    <NavigationContainer>
-            <TabNavigation />
-        </NavigationContainer>
+    <ThemeProvider >
+      <Stack>
+        <Stack.Screen name="(tabs)" />
+      </Stack>
+    </ThemeProvider>
   );
 };
 
@@ -25,3 +30,4 @@ const styles = StyleSheet.create({
 });
 
 export default MainScreen;
+
