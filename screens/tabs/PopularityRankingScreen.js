@@ -7,7 +7,7 @@ import { View, Text, StyleSheet, Button } from 'react-native';
 const PopularityRankingScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>메인 페이지</Text>
+      <Text>인기 순위</Text>
     </View>
   );
 };
