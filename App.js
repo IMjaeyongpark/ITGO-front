@@ -8,12 +8,6 @@ import SplashScreen from './screens/SplashScreen';
 import Main from './screens/Main'
 const Stack = createStackNavigator();
 
-
-export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
-};
-
 const App= () => {
   return (
     <NavigationContainer independent={true}>

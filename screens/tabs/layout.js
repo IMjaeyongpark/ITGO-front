@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MainScreen from './MainScreen'
 import NearmeScreen from './NearmeScreen'
 import PopularityRankingScreen from './PopularityRankingScreen'
+import BookmarkScreen from './BookmarkScreen'
+import MyScreen from './MyScreen'
 
 
 const Tab = createBottomTabNavigator();
@@ -12,9 +14,11 @@ export default function TabLayout() {
 
   return (
     <Tab.Navigator initialRouteName='MainScreen'>
-      <Tab.Screen name='MainScreen' component={MainScreen} />
-      <Tab.Screen name='NearmeScreen' component={NearmeScreen} />
-      <Tab.Screen name='PopularityRankingScreen' component={PopularityRankingScreen} />
+      <Tab.Screen name='홈' component={MainScreen} />
+      <Tab.Screen name='내 근처' component={NearmeScreen} />
+      <Tab.Screen name='즐겨찾기' component={BookmarkScreen} />
+      <Tab.Screen name='인기순위' component={PopularityRankingScreen} />
+      <Tab.Screen name='내 정보' component={MyScreen} />
     </Tab.Navigator>
   );
 };
