@@ -8,7 +8,7 @@ const BookmarkScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={listSyle}>즐겨찾기</Text>
+      <Text>즐겨찾기</Text>
     </View>
   );
 };
@@ -18,10 +18,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  listSyle:{
-    width:'100%',
-    height:"100px"
   }
 });
 

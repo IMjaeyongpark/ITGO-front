@@ -13,7 +13,9 @@ const MainScreen = () => {
         {
           a.map(x => (
             <View style={styles.listStyle}>
-              <Text>hihi</Text>
+              <View style={{felx:1,flexDirection:'row',width:'100%',height:'100%'}} >
+                <View style={{width:'35%',height:'100%'}}></View><View style={{width:'65%',height:'100%',backgroundColor:'pink'}}></View>
+              </View>
             </View>
           ))
         }
@@ -28,7 +30,7 @@ const styles = StyleSheet.create({
   },
   listStyle: {
     width: '100%',
-    height: 100,
+    height: 150,
     borderColor: 'black',
     borderBottomWidth: 0.5
   }

@@ -8,9 +8,7 @@ const MyScreen = () => {
 
   return (
     <View style={styles.container}>
-      <View>
-        <Text>hihi</Text>
-      </View>
+      <Text>내 정보</Text>
     </View>
   );
 };
@@ -21,9 +19,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  ListStyle:{
-
-  }
 });
 
 export default MyScreen;
