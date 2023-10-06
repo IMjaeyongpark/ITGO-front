@@ -1,23 +1,28 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { StyleSheet, SafeAreaView } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import List from './List'
 
 const Tab = createBottomTabNavigator();
 // MainScreen 컴포넌트
 const BookmarkScreen = () => {
 
   return (
-    <View style={styles.container}>
-      <Text>즐겨찾기</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <List/>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 1
+  },
+  listStyle: {
+    width: '100%',
+    height: 150,
+    borderColor: 'black',
+    borderBottomWidth: 0.5
   }
 });
 
