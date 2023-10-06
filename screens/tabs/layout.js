@@ -13,7 +13,7 @@ const Tab = createBottomTabNavigator();
 export default function TabLayout() {
 
   return (
-    <Tab.Navigator initialRouteName='MainScreen'>
+    <Tab.Navigator initialRouteName='MainScreen' backBehavior="none">
       <Tab.Screen name='홈' component={MainScreen} />
       <Tab.Screen name='내 근처' component={NearmeScreen} />
       <Tab.Screen name='즐겨찾기' component={BookmarkScreen} />

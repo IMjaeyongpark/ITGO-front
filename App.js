@@ -16,7 +16,9 @@ const App= () => {
         <Stack.Screen name="Start" component={StartScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
-        <Stack.Screen name="Main" component={Main} />
+        <Stack.Screen name="Main" component={Main} options={{
+      gestureEnabled: false, // 뒤로 가기 제스처를 비활성화
+    }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
