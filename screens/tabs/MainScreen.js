@@ -1,17 +1,15 @@
 import React from 'react';
 import { StyleSheet, SafeAreaView } from 'react-native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import List from './List'
 
-const Tab = createBottomTabNavigator();
 // MainScreen 컴포넌트
-const MainScreen = () => {
+const MainScreen = ({nav}) => {
 
   const a = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   const testImage = { uri: "https://img.danawa.com/prod_img/500000/148/824/img/17824148_1.jpg?shrink=330:*&_v=20220929125243" }
   return (
     <SafeAreaView style={styles.container}>
-      <List/>
+      <List nav={nav}/>
     </SafeAreaView>
   );
 };

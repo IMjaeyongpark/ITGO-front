@@ -10,16 +10,25 @@ import MyScreen from './MyScreen'
 
 const Tab = createBottomTabNavigator();
 // MainScreen 컴포넌트
-export default function TabLayout() {
+export default function TabLayout({ nav }) {
 
   return (
-    <Tab.Navigator initialRouteName='MainScreen' backBehavior="none">
-      <Tab.Screen name='홈' component={MainScreen} />
-      <Tab.Screen name='내 근처' component={NearmeScreen} />
-      <Tab.Screen name='즐겨찾기' component={BookmarkScreen} />
-      <Tab.Screen name='인기순위' component={PopularityRankingScreen} />
+    <Tab.Navigator initialRouteName='MainScreen'>
+      <Tab.Screen name='홈'>
+        {() => <MainScreen nav={nav} />}
+      </Tab.Screen>
+      <Tab.Screen name='내 근처'>
+        {() => <NearmeScreen nav={nav} />}
+      </Tab.Screen>
+      <Tab.Screen name='즐겨찾기'>
+        {() => <BookmarkScreen nav={nav} />}
+      </Tab.Screen>
+      <Tab.Screen name='인기순위'>
+        {() => <PopularityRankingScreen nav={nav} />}
+      </Tab.Screen>
       <Tab.Screen name='내 정보' component={MyScreen} />
     </Tab.Navigator>
+
   );
 };
 

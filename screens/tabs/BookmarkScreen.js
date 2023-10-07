@@ -1,15 +1,13 @@
 import React from 'react';
 import { StyleSheet, SafeAreaView } from 'react-native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import List from './List'
 
-const Tab = createBottomTabNavigator();
 // MainScreen 컴포넌트
-const BookmarkScreen = () => {
+const BookmarkScreen = ({nav}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <List/>
+      <List nav={nav}/>
     </SafeAreaView>
   );
 };

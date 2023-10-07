@@ -5,10 +5,10 @@ import List from './List'
 
 
 // MainScreen 컴포넌트
-const NearmeScreen = () => {
+const NearmeScreen = ({nav}) => {
   return (
     <SafeAreaView style={styles.container}>
-      <List/>
+      <List nav={nav}/>
     </SafeAreaView>
   );
 };

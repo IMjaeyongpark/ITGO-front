@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
 // MainScreen 컴포넌트
-const MyScreen = () => {
+const MyScreen = (nav) => {
 
   return (
     <View style={styles.container}>
