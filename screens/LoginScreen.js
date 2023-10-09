@@ -1,10 +1,9 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
-import { useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
 
-
-  
-const LoginScreen= () => {
+const LoginScreen = () => {
   const navigation = useNavigation();
 
   return (
