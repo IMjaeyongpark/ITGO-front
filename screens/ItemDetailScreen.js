@@ -1,8 +1,17 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, Image, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Button, Image, ScrollView, TouchableOpacity } from 'react-native';
+import Back from '../assets/back.png'
+import { useNavigation } from '@react-navigation/native';
 
 // MainScreen 컴포넌트
 const ItemDetailScreen = () => {
+
+  const navigation = useNavigation();
+
+  const backStack = () => {
+    navigation.goBack()
+
+  }
 
   test = { uri: "https://img.danawa.com/prod_img/500000/148/824/img/17824148_1.jpg?shrink=330:*&_v=20220929125243" }
 
@@ -31,8 +40,10 @@ const ItemDetailScreen = () => {
           <View style={{ height: 180 }} />
         </View>
       </ScrollView>
-      <View style={styles.back}>
-
+      <View style={styles.back} onPress={backStack}>
+        <TouchableOpacity onPress={backStack} style={{ height: "100%", width: "100%" }}>
+          <Image source={Back} style={{ height: "100%", width: "100%" }} transform={[{ scaleX: -1 }]} />
+        </TouchableOpacity>
       </View>
       <View style={styles.underView}><Text style={{ margin: '5%', fontSize: 25 }}>1,316,000원</Text></View>
     </View>
@@ -66,13 +77,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   back: {
+
+    alignItems: 'center',
+    justifyContent: 'center',
     position: 'absolute',
     top: 0,
     left: 0,
-    backgroundColor: 'black',
     height: 40,
     width: 40,
-    marginLeft: 30,
+    marginLeft: 15,
     marginTop: 40
   }
 });
