@@ -5,8 +5,10 @@ import StartScreen from './screens/StartScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import LoginScreen from './screens/LoginScreen';
 import SplashScreen from './screens/SplashScreen';
-import Main from './screens/Main'
-import ItemDetailScreen from './screens/ItemDetailScreen'
+import Main from './screens/Main';
+import ItemDetailScreen from './screens/ItemDetailScreen';
+import Profile from './screens/Profile';
+
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -21,6 +23,7 @@ const App = () => {
           gestureEnabled: false, // 뒤로 가기 제스처를 비활성화
         }} />
         <Stack.Screen name="ItemDetailScreen" component={ItemDetailScreen}/>
+        <Stack.Screen name="Profile" component={Profile}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -22,12 +22,9 @@ const ItemDetailScreen = () => {
       <ScrollView>
         <View style={styles.container}>
           <Image source={test} style={{ width: "80%", paddingBottom: '100%' }} />
-          <View style={styles.diego}>
-            <Button
-              title="바로가기"
-              onPress={() => alert('이동')}
-            />
-          </View>
+          <TouchableOpacity style={styles.diego} onPress={()=>{alert('이동')}}>
+            <Text style={{fontSize:20}}>바로가기</Text>
+          </TouchableOpacity>
           <View style={{ marginTop: "5%", width: "80%" }}>
             <Text style={{ fontSize: 20 }}>[최상급] 아이폰14프로 256GB 실버 배터리성능100%</Text>
           </View>

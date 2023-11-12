@@ -26,7 +26,9 @@ export default function TabLayout({ nav }) {
       <Tab.Screen name='인기순위'>
         {() => <PopularityRankingScreen nav={nav} />}
       </Tab.Screen>
-      <Tab.Screen name='내 정보' component={MyScreen} />
+      <Tab.Screen name='내 정보'>
+      {() => <MyScreen nav={nav} />}
+      </Tab.Screen>
     </Tab.Navigator>
 
   );

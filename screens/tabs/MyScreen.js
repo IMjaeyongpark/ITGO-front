@@ -1,30 +1,55 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button,Image } from 'react-native';
+import { View, Text, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
 import Locate from '../../assets/locate.png'
+import BasicProfile from '../../assets/basicProfile.jpg';
+
 // MainScreen 컴포넌트
-const MyScreen = (nav) => {
+const MyScreen = ({nav}) => {
+
+  profile = BasicProfile
 
   return (
     <View style={styles.container}>
-      <View style ={{flexDirection: 'row',alignItems: 'center',
-    }}>
-      <Image source = {{uri:"https://i.namu.wiki/i/jsPubRFgPfxn4Kca1eKOcK7-b4-NLxQyvuVOz9V1Qu4Fe77F4iWWktlMUKSVoZrmusi-YWs3CP_OQbzFVMWT5DQ0tVn7Cf4kxFTi0lZX00ec5WLwublm1HCAmPEpSSVi4gXWIMNGWT6JXVq_lsqWiA.webp"}} 
-      style={{width:50,height:50,borderRadius:100,margin:30}}></Image>
-      <Text style={{fontSize:20}}>닉네임</Text>
+      <TouchableOpacity onPress={() => nav.navigate('Profile')}>
+      <View style={{
+        flexDirection: 'row', alignItems: 'center',
+      }}>
+        <Image source={profile}
+          style={{ width: 50, height: 50, borderRadius: 100, margin: 30 }}></Image>
+        <Text style={{ fontSize: 20 }}>닉네임</Text>
       </View>
-      <View style ={{flexDirection: 'row',alignItems: 'center',marginTop:50}}>
-      <Image source = {Locate}
-    style={{width:25,height:36,marginLeft:40}}></Image>
-    
-        <Text style ={{fontSize:20,marginLeft:40}}>위치 설정</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
+      <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 50 }}>
+        <Image source={Locate}
+          style={{ width: 25, height: 36, marginLeft: 40 }}></Image>
+
+        <Text style={{ fontSize: 20, marginLeft: 40 }}>위치 설정</Text>
       </View>
-      <View style ={{flexDirection: 'row',alignItems: 'center',marginTop:30}}>
-      <Image source = {Locate}
-    style={{width:25,height:36,marginLeft:40}}></Image>
-    
-        <Text style ={{fontSize:20,marginLeft:40}}>동네 인증하기</Text>
+      </TouchableOpacity>
+      
+      <TouchableOpacity>
+      <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 30 }}>
+        <Image source={Locate}
+          style={{ width: 25, height: 36, marginLeft: 40 }}></Image>
+
+        <Text style={{ fontSize: 20, marginLeft: 40 }}>동네 인증하기</Text>
       </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity>
+      <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 30 }}>
+        <Text style={{ fontSize: 20, marginLeft: 105 }}>알림 설정</Text>
+      </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity>
+      <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 30 }}>
+        <Text style={{ fontSize: 20, marginLeft: 105 }}>알림 키워드 설정</Text>
+      </View>
+      </TouchableOpacity>
     </View>
+
   );
 };
 
