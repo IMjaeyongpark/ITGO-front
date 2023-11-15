@@ -4,7 +4,7 @@ import { Platform, Text, View, StyleSheet } from 'react-native';
 import * as Location from 'expo-location';
 
 const Geolocation = () => {
-    const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
 
   useEffect(() => {
