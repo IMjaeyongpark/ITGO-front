@@ -1,8 +1,9 @@
 import React, { useState,useRef } from 'react';
-import { View, Text, TouchableOpacity,TextInput, StyleSheet,Button, Alert } from 'react-native';
+import { View, Text, TouchableOpacity,TextInput, StyleSheet,Button, Alert,TouchableWithoutFeedback,Keyboard } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { firebaseConfig } from './config';
 import {FirebaseRecaptchaVerifierModal} from 'expo-firebase-recaptcha';
+import firebase from 'firebase/compat/app';
 
 const PhoneNumber = () => {
   const navigation = useNavigation();
@@ -15,8 +16,11 @@ const PhoneNumber = () => {
     const phoneProvider = new firebase.auth.PhoneAuthProvider();
     phoneProvider
         .verifyPhoneNumber(phoneNumber,recaptchaVerifier.current)
-        .then(setVerificationId)
-        .setPhoneNumber('');
+        .then((id)=>{
+          setVerificationId(id);
+          setPhoneNumber('');
+        })
+        
   };
 
   const confirmCode=()=>{
@@ -32,48 +36,48 @@ const PhoneNumber = () => {
       alert(error);
     })
     Alert.alert(
-      'Login Successful welcome to Dashboard'
+      '회원가입 성공!'
     )
+    navigation.navigate('Geolocation')
+
   }
   return (
-    <View style={styles.container}>
-      <FirebaseRecaptchaVerifierModal
-        ref={recaptchaVerifier}
-        firebaseConfig={firebaseConfig}
-      />
-      <Text style={styles.otpText}>
-        Login using OTP
-      </Text>
-      <TextInput
-        placeholder='phone number with country code'
-        onChangeText={setPhoneNumber}
-        keyboardType='phone-pad'
-        autoComplete='tel'
-        style={styles.textInput}
-      />
-      <TouchableOpacity style={styles.sendVerification} onPress={sendVerification}>
-        <Text style={styles.buttonText}>
-          Send verification
-        </Text>
-      </TouchableOpacity>
-      <TextInput
-        placeholder='Confirm code'
-        onChangeText={setCode}
-        keyboardType='number-pad'
-        autoCompleteType='tel'
-        style={styles.textInput}
+    //빈공간 클릭시 키보드 내려가는 동작위함
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        <FirebaseRecaptchaVerifierModal
+          ref={recaptchaVerifier}
+          firebaseConfig={firebaseConfig}
         />
-        <TouchableOpacity style={styles.sendCode} onPress={sendVerification}>
+        <Text style={styles.otpText}>
+          Login using OTP
+        </Text>
+        <TextInput
+          placeholder='phone number with country code'
+          onChangeText={setPhoneNumber}
+          keyboardType='phone-pad'
+          autoComplete='tel'
+          style={styles.textInput}
+        />
+        <TouchableOpacity style={styles.sendVerification} onPress={sendVerification}>
           <Text style={styles.buttonText}>
-            Confirm verification
+            Send verification
           </Text>
-          
         </TouchableOpacity>
-        <Button
-            title="동의하고 시작하기"
-            onPress={() => navigation.navigate('Geolocation')}
+        <TextInput
+          placeholder='Confirm code'
+          onChangeText={setCode}
+          keyboardType='number-pad'
+          autoCompleteType='tel'
+          style={styles.textInput}
           />
-    </View>
+          <TouchableOpacity style={styles.sendCode} onPress={confirmCode} >
+            <Text style={styles.buttonText} >
+              Confirm verification
+            </Text>
+          </TouchableOpacity>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
