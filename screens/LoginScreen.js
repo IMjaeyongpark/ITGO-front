@@ -1,10 +1,9 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
-import { useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
 
-
-  
-const LoginScreen= () => {
+const LoginScreen = () => {
   const navigation = useNavigation();
 
   return (
@@ -12,7 +11,7 @@ const LoginScreen= () => {
       <Text>로그인페이지</Text>
       <Button
         title="동의하고 시작하기"
-        onPress={() => navigation.navigate('Register')}
+        onPress={() => navigation.navigate('PhoneNumber')}
       />
     </View>
   );
