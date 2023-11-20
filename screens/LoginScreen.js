@@ -11,7 +11,7 @@ const LoginScreen = () => {
       <Text>로그인페이지</Text>
       <Button
         title="동의하고 시작하기"
-        onPress={() => navigation.navigate('Register')}
+        onPress={() => navigation.navigate('PhoneNumber')}
       />
     </View>
   );
