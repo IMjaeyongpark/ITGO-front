@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity,TextInput, StyleSheet,Button, Alert } from
 import { useNavigation } from '@react-navigation/native';
 import { firebaseConfig } from './config';
 import {FirebaseRecaptchaVerifierModal} from 'expo-firebase-recaptcha';
-import Geolocation from './Geolocation';
+
 const PhoneNumber = () => {
   const navigation = useNavigation();
   const [code,setCode]=useState('');

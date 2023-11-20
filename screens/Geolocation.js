@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Platform, Text, View, StyleSheet } from 'react-native';
+import { Platform, Text, View, StyleSheet, Button } from 'react-native';
 
 import * as Location from 'expo-location';
-
+import { useNavigation } from '@react-navigation/native';
 const Geolocation = () => {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+  const navigation = useNavigation();
 
   useEffect(() => {
     (async () => {
@@ -32,6 +33,11 @@ const Geolocation = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.paragraph}>{text}</Text>
+
+      <Button
+            title="main"
+            onPress={() => navigation.navigate('Main')}
+          />
     </View>
   );
 }
