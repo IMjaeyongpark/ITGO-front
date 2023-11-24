@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Back from '../assets/back.png';
@@ -8,6 +8,12 @@ import Camera from '../assets/camera.png'
 
 const Profile = () => {
   const navigation = useNavigation();
+
+  const [text, setText] = useState('닉네임')
+
+  const onChangeText = (inputText) => {
+    setText(inputText)
+  }
 
   state = {
     text: '',
@@ -41,8 +47,9 @@ const Profile = () => {
         <Text style={{ fontSize: 20, marginLeft: '10%' }} >닉네임</Text>
       </View>
       <View style={{ width: '80%', marginTop: 10 }}>
-        <TextInput style={{ backgroundColor: '#e8e3e3', height: 35, borderRadius: 8, }} onChangeText={(text) => { this.setState({ inputText: text }) }}
-          placeholder="닉네임"></TextInput>
+        <TextInput style={{ backgroundColor: '#e8e3e3', height: 35, borderRadius: 8, }}
+          onChangeText={onChangeText}
+          placeholder={text}></TextInput>
       </View>
 
 

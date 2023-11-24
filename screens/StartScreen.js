@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, TouchableOpacity,StyleSheet } from 'react-native';
+import { View, Text, Button, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const StartScreen = () => {
@@ -19,12 +19,12 @@ const StartScreen = () => {
 
       {/*로그인 버튼 */}
       <Text style={styles.text1}>이미 계정이 있나요? &nbsp;
-      <TouchableOpacity
-        title="로그인"
-        onPress={() => navigation.navigate('Login')}
-      >
-        <Text style={styles.touchtext}>로그인하기</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          title="로그인"
+          onPress={() => navigation.navigate('Login')}
+        >
+          <Text style={styles.touchtext}>로그인하기</Text>
+        </TouchableOpacity>
       </Text>
     </View>
   );
@@ -32,8 +32,8 @@ const StartScreen = () => {
 
 
 const styles = StyleSheet.create({
-  titletext:{
-    fontSize:25
+  titletext: {
+    fontSize: 25
   },
   regi: {
     backgroundColor: '#3498db',
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   starttext: {
     color: 'white', fontSize: 24
   },
-  text1:{
+  text1: {
     fontSize: 18
   },
   touchtext: {

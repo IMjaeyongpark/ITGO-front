@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Geolocation from 'react-native-geolocation-service';
-  
+
 const RegisterScreen = () => {
   const navigation = useNavigation();
   Geolocation.requestAuthorization(level);

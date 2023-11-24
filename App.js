@@ -9,10 +9,11 @@ import Geolocation from './screens/Geolocation';
 import Main from './screens/Main';
 import ItemDetailScreen from './screens/ItemDetailScreen';
 import Profile from './screens/Profile';
+import SearchScreen from './screens/SearchScreen';
 
 const Stack = createStackNavigator();
 
-const App= () => {
+const App = () => {
   return (
     <NavigationContainer independent={true}>
       <Stack.Navigator initialRouteName="Splash" screenOptions={{ headerShown: false }}>
@@ -25,8 +26,9 @@ const App= () => {
         <Stack.Screen name="Main" component={Main} options={{
           gestureEnabled: false, // 뒤로 가기 제스처를 비활성화
         }} />
-        <Stack.Screen name="ItemDetailScreen" component={ItemDetailScreen}/>
-        <Stack.Screen name="Profile" component={Profile}/>
+        <Stack.Screen name="ItemDetailScreen" component={ItemDetailScreen} />
+        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="SearchScreen" component={SearchScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

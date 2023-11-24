@@ -1,14 +1,26 @@
-import React from 'react';
-import { StyleSheet, SafeAreaView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, SafeAreaView, Text, View } from 'react-native';
 import List from './List'
+import axios from 'axios';
+import TopNav from './TopNav'
 
 // MainScreen 컴포넌트
-const MainScreen = ({nav}) => {
-  
+const MainScreen = ({ nav }) => {
+
+  const url = 'http://172.30.1.60:8080/search/test'
+
+
+  axios.get(url)
+    .then(response => console.log(response.data))
+    .catch(error => console.error('Error fetching data:', error));
+
+
+
   return (
-    <SafeAreaView style={styles.container}>
-      <List nav={nav}/>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <TopNav nav={nav}></TopNav>
+      <List nav={nav} />
+    </View>
   );
 };
 

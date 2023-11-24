@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
-import { useNavigation,useIsFocused } from '@react-navigation/native';
+import { useNavigation, useIsFocused } from '@react-navigation/native';
 
 
-  
+
 const SplashScreen = () => {
 
   const navigation = useNavigation();
-const [showLogo, setShowLogo] = useState(true);
+  const [showLogo, setShowLogo] = useState(true);
   const isFocused = useIsFocused();
 
   useEffect(() => {
