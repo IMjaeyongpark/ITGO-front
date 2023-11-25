@@ -15,16 +15,10 @@ const Tab = createBottomTabNavigator();
 export default function TabLayout({ nav }) {
 
   return (
-    <Tab.Navigator initialRouteName='MainScreen' screenOptions={{
+    <Tab.Navigator initialRouteName='홈' screenOptions={{
       headerShown: false, // 헤더를 숨김
     }}>
-      <Tab.Screen name='홈' options={{
-        tabBarIcon: () => (
-          <Ionicons name="ios-home-outline" size={24} color="black" />
-        ),
-      }}>
-        {() => <MainScreen nav={nav} />}
-      </Tab.Screen>
+      
       <Tab.Screen name='내 근처' options={{
         tabBarIcon: () => (
           <Ionicons name="ios-location-outline" size={24} color="black" />
@@ -38,6 +32,13 @@ export default function TabLayout({ nav }) {
         ),
       }}>
         {() => <BookmarkScreen nav={nav} />}
+      </Tab.Screen>
+      <Tab.Screen name='홈' options={{
+        tabBarIcon: () => (
+          <Ionicons name="ios-home-outline" size={24} color="black" />
+        ),
+      }}>
+        {() => <MainScreen nav={nav} />}
       </Tab.Screen>
       <Tab.Screen name='인기순위' options={{
         tabBarIcon: () => (

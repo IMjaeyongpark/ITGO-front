@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { View, Image, TouchableOpacity } from 'react-native';
+import { View, Image, TouchableOpacity, SafeAreaView } from 'react-native';
 import { Ionicons, AntDesign, Feather } from '@expo/vector-icons';
 
 
 const TopNav = ({ nav }) => {
     return (
-        <View style={{ width: '100%', height: '15%', borderBottomColor: 'black', borderBottomWidth: 0.8, flexDirection: 'row' }}>
+        <SafeAreaView style={{ width: '100%', height: '15%', borderBottomColor: 'black', borderBottomWidth: 0.8, flexDirection: 'row' }}>
             <View style={{ width: '50%', alignItems: 'center', flexDirection: 'row' }}>
                 <TouchableOpacity>
                     <AntDesign name="bars" size={40} color="black" style={{ marginLeft: 20, }} />
@@ -19,7 +19,7 @@ const TopNav = ({ nav }) => {
                     <AntDesign name="bells" size={40} color="black" />
                 </TouchableOpacity>
             </View>
-        </View>
+        </SafeAreaView>
     );
 };
 

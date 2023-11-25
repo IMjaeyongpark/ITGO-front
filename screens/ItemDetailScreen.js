@@ -21,18 +21,18 @@ const ItemDetailScreen = () => {
 
       <ScrollView>
         <View style={styles.container}>
-          <Image source={test} style={{ width: "80%", paddingBottom: '100%' }} />
-          <TouchableOpacity style={styles.diego} onPress={() => { alert('이동') }}>
-            <Text style={{ fontSize: 20 }}>바로가기</Text>
-          </TouchableOpacity>
-          <View style={{ marginTop: "5%", width: "80%" }}>
-            <Text style={{ fontSize: 20 }}>[최상급] 아이폰14프로 256GB 실버 배터리성능100%</Text>
+          <Image source={test} style={{ width: "100%", paddingBottom: '100%' }} />
+          <View style={{ marginTop: "2%", width: "80%" }}>
+            <Text style={{ fontSize: 30,marginTop:'5%',fontWeight: 'bold' }}>1,316,000원</Text>
+          </View>
+          <View style={{ marginTop: "3%", width: "80%" }}>
+            <Text style={{ fontSize: 15 }}>[최상급] 아이폰14프로 256GB 실버 배터리성능100%</Text>
           </View>
           <View style={{ marginTop: "2%", width: "80%" }}>
             <Text style={{ fontSize: 15 }}>배방읍 1시간 전</Text>
           </View>
           <View style={{ marginTop: "5%", width: "80%" }}>
-            <Text style={{ fontSize: 20 }}>{testText}</Text>
+            <Text style={{ fontSize: 15 }}>{testText}</Text>
           </View>
           <View style={{ height: 180 }} />
         </View>
@@ -42,7 +42,10 @@ const ItemDetailScreen = () => {
           <Image source={Back} style={{ height: "100%", width: "100%" }} transform={[{ scaleX: -1 }]} />
         </TouchableOpacity>
       </View>
-      <View style={styles.underView}><Text style={{ margin: '5%', fontSize: 25 }}>1,316,000원</Text></View>
+      <View style={styles.underView}>
+        <TouchableOpacity style={styles.diego} onPress={() => { alert('이동') }}>
+          <Text style={{ fontSize: 15, color: 'white' }}>사이트로 이동하기</Text>
+        </TouchableOpacity></View>
     </View>
   );
 };
@@ -54,13 +57,13 @@ const styles = StyleSheet.create({
     marginTop: "10%"
   },
   diego: {
-    backgroundColor: "yellow",
-    marginTop: "5%",
+    backgroundColor: "#3454CD",
     width: "80%",
-    height: "6%",
+    height: "50%",
     borderRadius: "10%",
     alignItems: 'center',
     justifyContent: 'center',
+    marginLeft: "15%"
   },
   underView: {
     position: 'absolute',
@@ -72,6 +75,7 @@ const styles = StyleSheet.create({
     felx: 1,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   back: {
 

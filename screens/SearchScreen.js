@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, Image } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, Image, SafeAreaView, TextInput } from 'react-native';
 import Back from '../assets/back.png';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons, AntDesign, Feather } from '@expo/vector-icons';
 
 
 const SearchScreen = () => {
@@ -11,30 +12,60 @@ const SearchScreen = () => {
         navigation.goBack()
     }
 
-    return (
-        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-            <Text>searchScreen</Text>
+    const [text, setText] = useState('')
 
-            <View style={styles.back} onPress={backStack}>
-                <TouchableOpacity onPress={backStack} style={{ height: "100%", width: "100%" }}>
-                    <Image source={Back} style={{ height: "100%", width: "100%" }} transform={[{ scaleX: -1 }]} />
+    const onChangeText = (inputText) => {
+        setText(inputText)
+    }
+
+    return (
+        <SafeAreaView style={{ flex: 1 }}>
+            <View style={styles.searchView}>
+                <View style={{
+                    width: "80%", height: '70%', backgroundColor: "#E9E4E4", borderRadius: '10%',
+                    flexDirection: 'row',
+                }}>
+                    <TextInput style={{ width: "80%", height: '100%', marginLeft: '5%' }}
+                        placeholder='제품명을 입력하세요'
+                        onChangeText={onChangeText}
+                    ></TextInput>
+                    <TouchableOpacity style={{ justifyContent: "center", alignItems: "center" }} onPress={() => navigation.navigate('SearchResultScreen')}>
+                        <Feather name="search" size={30} color="black" style={{ opacity: 0.4 }} />
+                    </TouchableOpacity>
+                </View>
+                <TouchableOpacity style={{ marginLeft: '5%' }} onPress={backStack}>
+                    <Text style={{ fontSize: '18' }}>취소</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+            <View style={{ flexDirection: 'row', marginTop: "5%", marginLeft: '4%', alignItems: "center" }}>
+                <View style={{ height: '100%', width: '80%' }}>
+                    <Text style={{ fontSize: 23, marginLeft: '3%' }}>최근 검색어</Text>
+                </View>
+                <TouchableOpacity>
+                    <Text style={{ fontSize: 15, color: '#4D4D4D' }}>지우기</Text>
+                </TouchableOpacity>
+
+            </View>
+        </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
-    back: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        height: 40,
-        width: 40,
-        marginLeft: 15,
-        marginTop: 40
+    searchView: {
+        width: '100%',
+        height: '8%',
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: 'row',
+        borderBottomColor: "#C9C3C3",
+        borderBottomWidth: '0.5px',
+        // shadowColor:'rgb(50,50,50)',
+        // shadowOpacity:'0.5',
+        // shadowRadius:5,
+        // shadowOffset:{
+        //     height:'3',
+        //     width:0
+        // }
     }
 });
 

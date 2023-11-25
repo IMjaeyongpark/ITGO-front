@@ -10,6 +10,7 @@ import Main from './screens/Main';
 import ItemDetailScreen from './screens/ItemDetailScreen';
 import Profile from './screens/Profile';
 import SearchScreen from './screens/SearchScreen';
+import SearchResultScreen from './screens/SearchResultScreen';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +30,7 @@ const App = () => {
         <Stack.Screen name="ItemDetailScreen" component={ItemDetailScreen} />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="SearchScreen" component={SearchScreen} />
+        <Stack.Screen name="SearchResultScreen" component={SearchResultScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

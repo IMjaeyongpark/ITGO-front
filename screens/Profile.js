@@ -15,11 +15,6 @@ const Profile = () => {
     setText(inputText)
   }
 
-  state = {
-    text: '',
-    inputText: ''
-
-  }
 
   const backStack = () => {
     navigation.goBack()
