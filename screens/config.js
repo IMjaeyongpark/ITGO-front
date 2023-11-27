@@ -1,9 +1,10 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import {apiKey} from "@env"
 
 export const firebaseConfig = {
-    apiKey: "AIzaSyAuzlJ8MSPb_31dQ2KGdSoMXVnqG21tVxI",
+    apiKey: apiKey,
     authDomain: "phonevalidation-33f7d.firebaseapp.com",
     projectId: "phonevalidation-33f7d",
     storageBucket: "phonevalidation-33f7d.appspot.com",
