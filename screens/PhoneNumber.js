@@ -5,18 +5,19 @@ import { firebaseConfig } from './config';
 import {FirebaseRecaptchaVerifierModal} from 'expo-firebase-recaptcha';
 import firebase from 'firebase/compat/app';
 
-
 const PhoneNumber = () => {
   const navigation = useNavigation();
   const [code,setCode]=useState('');
   const recaptchaVerifier = useRef(null);
-  const [phoneNumber, setPhoneNumber] =useState();
+  const [phoneNumber, setPhoneNumber] =useState("+82");
   const [verificationId, setVerificationId] =useState();
   const [verificationError, setVerificationError] = useState();
   const sendVerification=()=>{
     const phoneProvider = new firebase.auth.PhoneAuthProvider();
+    const formattedPhoneNumber = "+82" + phoneNumber; // "+82"를 전화번호에 추가합니다.
+  
     phoneProvider
-        .verifyPhoneNumber(phoneNumber,recaptchaVerifier.current)
+        .verifyPhoneNumber(formattedPhoneNumber,recaptchaVerifier.current)
         .then((id)=>{
           setVerificationId(id);
           setPhoneNumber('');
@@ -92,6 +93,10 @@ const PhoneNumber = () => {
                 인증번호가 오지 않나요?
               </Text>
             </TouchableOpacity>
+            <Button
+            title="Geolocation"
+            onPress={() => navigation.navigate('Geolocation')}
+          />
           </View>
       </View>
     </TouchableWithoutFeedback>

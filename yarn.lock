@@ -2902,7 +2902,7 @@
   "resolved" "https://registry.npmjs.org/await/-/await-0.2.6.tgz"
   "version" "0.2.6"
 
-"axios@^1.5.1":
+"axios@^1.6.2":
   "integrity" "sha512-7i24Ri4pmDRfJTR7LDBhsOTtcm+9kjX5WiY1X3wIisx6G9So3pfMkEiU7emUBe46oceVImccTEM3k6C5dbVW8A=="
   "resolved" "https://registry.npmjs.org/axios/-/axios-1.6.2.tgz"
   "version" "1.6.2"
