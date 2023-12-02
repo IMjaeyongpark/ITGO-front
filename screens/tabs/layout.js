@@ -6,7 +6,7 @@ import NearmeScreen from './NearmeScreen'
 import PopularityRankingScreen from './PopularityRankingScreen'
 import BookmarkScreen from './BookmarkScreen'
 import MyScreen from './MyScreen'
-import { Ionicons, AntDesign } from '@expo/vector-icons';
+import { Feather, Ionicons, AntDesign } from '@expo/vector-icons';
 
 
 
@@ -18,39 +18,48 @@ export default function TabLayout({ nav }) {
     <Tab.Navigator initialRouteName='홈' screenOptions={{
       headerShown: false, // 헤더를 숨김
     }}>
-      
-      <Tab.Screen name='내 근처' options={{
-        tabBarIcon: () => (
-          <Ionicons name="ios-location-outline" size={24} color="black" />
-        ),
-      }}>
-        {() => <NearmeScreen nav={nav} />}
-      </Tab.Screen>
-      <Tab.Screen name='즐겨찾기' options={{
-        tabBarIcon: () => (
-          <AntDesign name="staro" size={24} color="black" />
-        ),
-      }}>
-        {() => <BookmarkScreen nav={nav} />}
-      </Tab.Screen>
-      <Tab.Screen name='홈' options={{
-        tabBarIcon: () => (
-          <Ionicons name="ios-home-outline" size={24} color="black" />
-        ),
-      }}>
-        {() => <MainScreen nav={nav} />}
-      </Tab.Screen>
+
       <Tab.Screen name='인기순위' options={{
         tabBarIcon: () => (
-          <AntDesign name="Trophy" size={24} color="black" />
+          <Feather name="menu" size={30} color="black" />
         ),
+        tabBarLabel: () => null
       }}>
         {() => <PopularityRankingScreen nav={nav} />}
       </Tab.Screen>
+
+      <Tab.Screen name='즐겨찾기' options={{
+        tabBarIcon: () => (
+          <AntDesign name="hearto" size={30} color="black" />
+        ),
+        tabBarLabel: () => null
+      }}>
+        {() => <BookmarkScreen nav={nav} />}
+      </Tab.Screen>
+
+      <Tab.Screen name='홈' options={{
+        tabBarIcon: () => (
+          <Ionicons name="ios-home-outline" size={30} color="black" />
+        ),
+        tabBarLabel: () => null
+      }}>
+        {() => <MainScreen nav={nav} />}
+      </Tab.Screen>
+
+      <Tab.Screen name='내 근처' options={{
+        tabBarIcon: () => (
+          <Ionicons name="ios-location-outline" size={30} color="black" />
+        ),
+        tabBarLabel: () => null
+      }}>
+        {() => <NearmeScreen nav={nav} />}
+      </Tab.Screen>
+
       <Tab.Screen name='내 정보' options={{
         tabBarIcon: () => (
-          <AntDesign name="user" size={24} color="black" />
+          <AntDesign name="user" size={30} color="black" />
         ),
+        tabBarLabel: () => null
       }}>
         {() => <MyScreen nav={nav} />}
       </Tab.Screen>

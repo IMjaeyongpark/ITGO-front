@@ -7,13 +7,6 @@ import TopNav from './TopNav'
 // MainScreen 컴포넌트
 const MainScreen = ({ nav }) => {
 
-  const url = 'http://172.30.1.60:8080/search/test'
-
-
-  axios.get(url)
-    .then(response => console.log(response.data))
-    .catch(error => console.error('Error fetching data:', error));
-
 
 
   return (

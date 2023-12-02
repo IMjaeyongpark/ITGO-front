@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Platform, Text, View, StyleSheet, Button, Button, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { Platform, Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import * as Location from 'expo-location';
 import { useNavigation } from '@react-navigation/native';
@@ -9,6 +8,7 @@ import {REST_API_KEY} from "@env"
 
 
 const Geolocation = () => {
+
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [geolocationName, setGeolocationName] = useState(null);
@@ -19,7 +19,6 @@ const Geolocation = () => {
 
   useEffect(() => {
     (async () => {
-      
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') {
         setErrorMsg('Permission to access location was denied');
@@ -90,6 +89,12 @@ const Geolocation = () => {
       
         
       <Text style={styles.paragraph}>{text}</Text>
+
+      <Button
+            title="main"
+            onPress={() => navigation.navigate('Main')}
+          />
+      </View>
     </View>
   );
 }
@@ -102,6 +107,42 @@ const styles = StyleSheet.create({
     },
     paragraph:{
 
+    },
+    explanationcontainer:{
+      margin:60
+    },
+    explanation:{
+      fontSize:24,
+      fontWeight:'bold',
+      textAlign: 'center',
+      marginBottom:20
+    },
+    searchcontainer:{
+      
+    },
+    textInput:{
+      width: 304,
+      height: 59,
+      flexShrink:0,
+      backgroundColor:'#AEAEAE96',
+      borderRadius:30,
+      textAlign: 'center',
+      marginBottom: 20,
+    },
+    buttonstyle:{
+      marginBottom: 20,
+      backgroundColor:'#3454CD',
+      borderRadius:7,
+      width: 304,
+      height: 47
+    },
+    buttonText:{
+      textAlign:'center',
+      color:'#fff',
+      fontWeight:'bold',
+      lineHeight: 45, // 높이에 맞게 조절
     }
+  
+
 })
 export default Geolocation
