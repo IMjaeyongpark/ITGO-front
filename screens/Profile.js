@@ -41,8 +41,8 @@ const Profile = () => {
       <View style={{ alignItems: 'flex-start', width: '100%', marginTop: 30 }}>
         <Text style={{ fontSize: 20, marginLeft: '10%' }} >닉네임</Text>
       </View>
-      <View style={{ width: '80%', marginTop: 10 }}>
-        <TextInput style={{ backgroundColor: '#e8e3e3', height: 35, borderRadius: 8, }}
+      <View style={{ width: '80%', marginTop: 10,backgroundColor: '#e8e3e3',borderRadius: 8 }}>
+        <TextInput style={{ height: 35,width:'95%',marginLeft:'3%' }}
           onChangeText={onChangeText}
           placeholder={text}></TextInput>
       </View>

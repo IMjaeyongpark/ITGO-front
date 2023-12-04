@@ -17,6 +17,18 @@ const SearchScreen = () => {
     const onChangeText = (inputText) => {
         setText(inputText)
     }
+    
+    const [searchHistory,setSearchHistory] = useState(['아이폰 15', '아이폰 15 맥스', "search"])
+
+    const deleteSearchHistory = (idx) => {
+        const tmp = [...searchHistory]
+        tmp.splice(idx,1)
+        setSearchHistory(tmp)
+    }
+
+    const delAllSearchHistory = () => {
+        setSearchHistory([])
+    }
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -39,12 +51,27 @@ const SearchScreen = () => {
             </View>
             <View style={{ flexDirection: 'row', marginTop: "5%", marginLeft: '4%', alignItems: "center" }}>
                 <View style={{ height: '100%', width: '80%' }}>
-                    <Text style={{ fontSize: 23, marginLeft: '3%' }}>최근 검색어</Text>
+                    <Text style={{ fontSize: 23, marginLeft: '3%', fontWeight:"500" }}>최근 검색어</Text>
                 </View>
                 <TouchableOpacity>
-                    <Text style={{ fontSize: 15, color: '#4D4D4D' }}>지우기</Text>
+                    <Text style={{ fontSize: 15, color: '#4D4D4D' }} onPress={delAllSearchHistory}>지우기</Text>
                 </TouchableOpacity>
+            </View>
 
+            <View style={{ flex: 1 }}>
+                {searchHistory.map((x, index) => (
+                    <View style={{ flexDirection: 'row', marginLeft: "8%", marginTop: "4%", alignItems: "center" }}>
+                        <View style={{ flexDirection: 'row', borderColor: '#C9C3C3', borderWidth: 1, borderRadius: 20, padding: 7, alignItems: "center" }}>
+                            <View style={{ alignItems: 'center', }}>
+                                <Text style={{ fontSize: 19, fontWeight: '300' }}>   {x} </Text>
+                            </View>
+                            <TouchableOpacity style={{ marginLeft: 5, }} onPress={()=>deleteSearchHistory(index)}>
+                                <AntDesign name="close" size={19} color="#C9C3C3" />
+                            </TouchableOpacity>
+                            <Text>  </Text>
+                        </View>
+                    </View>
+                ))}
             </View>
         </SafeAreaView>
     );

@@ -1,8 +1,10 @@
-import React from 'react';
+import React,{ useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Button, Image, ScrollView, TouchableOpacity, SafeAreaView } from 'react-native';
 import Back from '../assets/back.png'
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons, AntDesign, Feather } from '@expo/vector-icons';
+import { API_IP } from "@env"
+import axios from 'axios';
 
 // MainScreen 컴포넌트
 const ItemDetailScreen = ({ route }) => {
@@ -10,11 +12,35 @@ const ItemDetailScreen = ({ route }) => {
   const navigation = useNavigation();
 
   const value = route.params.x
+  const [content,setContent] = useState('')
+  const [scrapedUrl,setScrapedUrl] = useState('')
 
   const backStack = () => {
     navigation.goBack()
 
   }
+
+  const url = API_IP + '/post/view';
+
+  const params = {
+    memberId: 1,
+    postId:value.postId
+};
+
+useEffect(() => {
+  const fetchData = async () => {
+      try {
+          const response = await axios.get(url, { params });
+          setContent(response.data.content)
+          setScrapedUrl(response.data.scrapedUrl)
+      } catch (error) {
+          console.error('데이터를 가져오는 중 오류 발생:', error);
+      }
+  };
+
+  fetchData(); // useEffect 안에서 비동기 함수 호출
+}, []); // 빈 배열은 컴포넌트가 마운트될 때 한 번만 실행
+
 
   return (
     <View>
@@ -27,7 +53,7 @@ const ItemDetailScreen = ({ route }) => {
       <ScrollView style={{ height: "89%", backgroundColor: 'white' }}>
         <View style={styles.container}>
           <Image source={value.Image} style={{ width: "100%", paddingBottom: '100%', }} />
-          <View style={{ borderBottomColor: '#C9C3C3', borderBottomWidth: 0.8, width: '100%' }}>
+          <View style={{ borderBottomColor: '#C9C3C3', borderBottomWidth: 0.8, width: '100%',borderTopColor: '#C9C3C3', borderTopWidth: 0.8 }}>
             <View style={{ marginTop: "2%", width: "80%" }}>
               <Text style={{ fontSize: 30, marginTop: '5%', fontWeight: 'bold', marginLeft: '5%' }}>{value.price.toLocaleString('ko-KR')}원</Text>
             </View>
@@ -36,7 +62,7 @@ const ItemDetailScreen = ({ route }) => {
             </View>
           </View>
           <View style={{ marginTop: "5%", width: "80%" }}>
-            <Text style={{ fontSize: 15 }}>{value.content}</Text>
+            <Text style={{ fontSize: 15 }}>{content}</Text>
           </View>
           <View style={{ height: 180 }} />
         </View>
@@ -46,7 +72,7 @@ const ItemDetailScreen = ({ route }) => {
         <TouchableOpacity style={{ marginLeft: "5%" }}>
           <AntDesign name="hearto" size={30} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.diego} onPress={() => { alert('이동') }}>
+        <TouchableOpacity style={styles.diego} onPress={() => { alert(scrapedUrl) }}>
           <Text style={{ fontSize: 15, color: 'white' }}>사이트로 이동하기</Text>
         </TouchableOpacity></View>
     </View>

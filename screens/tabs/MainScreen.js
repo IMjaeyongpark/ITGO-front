@@ -7,8 +7,6 @@ import TopNav from './TopNav'
 // MainScreen 컴포넌트
 const MainScreen = ({ nav }) => {
 
-
-
   return (
     <View style={styles.container}>
       <TopNav nav={nav}></TopNav>
