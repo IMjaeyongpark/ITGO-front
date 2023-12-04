@@ -1,14 +1,16 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView } from 'react-native';
+import { StyleSheet, SafeAreaView, View } from 'react-native';
 import List from './List'
+import TopNav from './TopNav'
 
 
 // MainScreen 컴포넌트
-const NearmeScreen = ({nav}) => {
+const NearmeScreen = ({ nav }) => {
   return (
-    <SafeAreaView style={styles.container}>
-      <List nav={nav}/>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <TopNav nav={nav}></TopNav>
+      <List nav={nav} />
+    </View>
   );
 };
 

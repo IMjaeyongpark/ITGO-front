@@ -4,12 +4,12 @@ import TabLayout from './tabs/layout';
 import { useNavigation } from '@react-navigation/native';
 
 const Tabnav = () => {
-    
+
     const navigation = useNavigation();
 
     return (
         <NavigationContainer independent={true}>
-            <TabLayout nav={navigation}/>
+            <TabLayout nav={navigation} />
         </NavigationContainer>
     )
 }

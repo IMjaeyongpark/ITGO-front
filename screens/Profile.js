@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Back from '../assets/back.png';
@@ -9,11 +9,12 @@ import Camera from '../assets/camera.png'
 const Profile = () => {
   const navigation = useNavigation();
 
-  state = {
-    text: '',
-    inputText: ''
+  const [text, setText] = useState('닉네임')
 
+  const onChangeText = (inputText) => {
+    setText(inputText)
   }
+
 
   const backStack = () => {
     navigation.goBack()
@@ -40,9 +41,10 @@ const Profile = () => {
       <View style={{ alignItems: 'flex-start', width: '100%', marginTop: 30 }}>
         <Text style={{ fontSize: 20, marginLeft: '10%' }} >닉네임</Text>
       </View>
-      <View style={{ width: '80%', marginTop: 10 }}>
-        <TextInput style={{ backgroundColor: '#e8e3e3', height: 35, borderRadius: 8, }} onChangeText={(text) => { this.setState({ inputText: text }) }}
-          placeholder="닉네임"></TextInput>
+      <View style={{ width: '80%', marginTop: 10,backgroundColor: '#e8e3e3',borderRadius: 8 }}>
+        <TextInput style={{ height: 35,width:'95%',marginLeft:'3%' }}
+          onChangeText={onChangeText}
+          placeholder={text}></TextInput>
       </View>
 
 
