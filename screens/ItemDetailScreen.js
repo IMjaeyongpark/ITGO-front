@@ -20,7 +20,7 @@ const ItemDetailScreen = ({ route }) => {
 
   }
 
-  const url = API_IP + '/post/view';
+  const url = API_IP + '/post/view'
 
   const params = {
     memberId: 1,
