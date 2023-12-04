@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Platform, Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import {Text, View, StyleSheet, Button, TouchableOpacity,Alert} from 'react-native';
 import axios from 'axios';
 import * as Location from 'expo-location';
 import { useNavigation } from '@react-navigation/native';
@@ -15,7 +15,8 @@ const Geolocation = () => {
   const navigation = useNavigation();
   const [coordinate_X,setCoordinate_X] = useState(null);
   const [coordinate_Y,setCoordinate_Y] = useState(null);
-  const [text,setText] = useState('위치찾는중');
+  const [text,setText] = useState('');
+  const [autogeolocationName,setAutoGeolocationName]= useState(null);
 
   useEffect(() => {
     (async () => {
@@ -29,6 +30,30 @@ const Geolocation = () => {
       setLocation(location);
     })();
   }, []); // 두 번째 매개변수로 빈 배열을 전달하여 한 번만 실행되도록 설정
+  useEffect(() => {
+    // autogeolocationName이 변경될 때 실행되는 로직
+    console.log("autogeolocationName이 변경되었습니다:", autogeolocationName);
+    // 추가로 원하는 작업을 수행할 수 있습니다.
+  }, [autogeolocationName]); // autogeolocationName이 변경될 때만 useEffect 실행
+
+  //위치 확인창
+  const goAlert = () =>{
+    const displayValue = autogeolocationName || ""; // null이나 falsy한 값이라면 빈 문자열로 처리
+
+  Alert.alert(
+    "현재 주소가 일치하시나요?",
+    displayValue,
+    [
+      {
+        text: "아니요",
+        onPress: () => console.log("아니라는데"),
+        style: "cancel",
+      },
+      { text: "네", onPress: () => navigation.navigate('Main') },
+    ],
+    { cancelable: false }
+  );
+  }
 
   const requestGeoCoord2Address = async () => {
     try {
@@ -46,7 +71,13 @@ const Geolocation = () => {
         }
       );
   
-      console.log(response.data); // 응답 데이터를 출력하거나 원하는 로직을 수행하세요
+      console.log("ss",response.data.documents[0].road_address.region_1depth_name); // 응답 데이터를 출력하거나 원하는 로직을 수행하세요
+      setAutoGeolocationName(
+        response.data.documents[0].road_address.region_1depth_name+" "+
+        response.data.documents[0].road_address.region_2depth_name+" "+
+        response.data.documents[0].road_address.region_3depth_name
+        );
+      goAlert();
     } catch (error) {
       console.error(error); // 에러 처리 로직을 추가하세요
     }
@@ -81,7 +112,7 @@ const Geolocation = () => {
             keyboardType='phone-pad'
             style={styles.textInput}
           />
-        <TouchableOpacity style={styles.buttonstyle} onPress={requestGeoCoord2Address}>
+        <TouchableOpacity  style={styles.buttonstyle} onPress={requestGeoCoord2Address}>
           <Text style={styles.buttonText}>현재위치로 찾기</Text>
         </TouchableOpacity>
      
@@ -94,6 +125,7 @@ const Geolocation = () => {
             title="main"
             onPress={() => navigation.navigate('Main')}
           />
+      
       </View>
     </View>
   );
