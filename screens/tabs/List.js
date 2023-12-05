@@ -7,8 +7,8 @@ import { API_IP } from "@env"
 
 const List = ({ nav }) => {
 
-    const url = API_IP + '/post/find/all/list';
-
+    const url = API_IP + '/post/find/all/list'
+    
     const params = {
         memberId: 1,
         page: 1,
