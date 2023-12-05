@@ -17,17 +17,22 @@ const SearchScreen = () => {
     const onChangeText = (inputText) => {
         setText(inputText)
     }
-    
-    const [searchHistory,setSearchHistory] = useState(['아이폰 15', '아이폰 15 맥스', "search"])
+
+    const [searchHistory, setSearchHistory] = useState(['아이폰 15', '아이폰 15 맥스', "search"])
 
     const deleteSearchHistory = (idx) => {
         const tmp = [...searchHistory]
-        tmp.splice(idx,1)
+        tmp.splice(idx, 1)
         setSearchHistory(tmp)
     }
 
     const delAllSearchHistory = () => {
         setSearchHistory([])
+    }
+
+    const addSearchHistory = () => {
+        const tmp = [text, ...searchHistory]
+        setSearchHistory(tmp)
     }
 
     return (
@@ -41,7 +46,10 @@ const SearchScreen = () => {
                         placeholder='제품명을 입력하세요'
                         onChangeText={onChangeText}
                     ></TextInput>
-                    <TouchableOpacity style={{ justifyContent: "center", alignItems: "center" }} onPress={() => navigation.navigate('SearchResultScreen')}>
+                    <TouchableOpacity style={{ justifyContent: "center", alignItems: "center" }} onPress={() => {
+                        addSearchHistory()
+                        navigation.navigate('SearchResultScreen')
+                    }}>
                         <Feather name="search" size={30} color="black" style={{ opacity: 0.4 }} />
                     </TouchableOpacity>
                 </View>
@@ -51,7 +59,7 @@ const SearchScreen = () => {
             </View>
             <View style={{ flexDirection: 'row', marginTop: "5%", marginLeft: '4%', alignItems: "center" }}>
                 <View style={{ height: '100%', width: '80%' }}>
-                    <Text style={{ fontSize: 23, marginLeft: '3%', fontWeight:"500" }}>최근 검색어</Text>
+                    <Text style={{ fontSize: 23, marginLeft: '3%', fontWeight: "500" }}>최근 검색어</Text>
                 </View>
                 <TouchableOpacity>
                     <Text style={{ fontSize: 15, color: '#4D4D4D' }} onPress={delAllSearchHistory}>지우기</Text>
@@ -65,7 +73,7 @@ const SearchScreen = () => {
                             <View style={{ alignItems: 'center', }}>
                                 <Text style={{ fontSize: 19, fontWeight: '300' }}>   {x} </Text>
                             </View>
-                            <TouchableOpacity style={{ marginLeft: 5, }} onPress={()=>deleteSearchHistory(index)}>
+                            <TouchableOpacity style={{ marginLeft: 5, }} onPress={() => deleteSearchHistory(index)}>
                                 <AntDesign name="close" size={19} color="#C9C3C3" />
                             </TouchableOpacity>
                             <Text>  </Text>

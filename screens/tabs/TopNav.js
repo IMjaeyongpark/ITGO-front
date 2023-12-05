@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, TouchableOpacity, SafeAreaView,Text } from 'react-native';
 import { Ionicons, AntDesign, Feather } from '@expo/vector-icons';
 
 
@@ -12,8 +12,8 @@ const TopNav = ({ nav }) => {
                 <TouchableOpacity style={{ marginEnd:'10%', marginLeft: '50%' }} onPress={() => nav.navigate('SearchScreen')}>
                     <Feather name="search" size={30} color="white" />
                 </TouchableOpacity>
-                <TouchableOpacity>
-                    <AntDesign name="bells" size={30} color="white"  />
+                <TouchableOpacity onPress={() => nav.navigate('Compare')}>
+                    <AntDesign name="bells" size={30} color="white"/>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>

@@ -7,10 +7,18 @@ import TopNav from './TopNav'
 // MainScreen 컴포넌트
 const MainScreen = ({ nav }) => {
 
+  const par = {
+    memberId: 1,
+    page: 1,
+    size: 10,
+    sortBy: 'RECENT_POST',
+  }
+  const path = '/post/find/all/list'
+
   return (
     <View style={styles.container}>
       <TopNav nav={nav}></TopNav>
-      <List nav={nav} />
+      <List nav={nav} path={path} par={par} />
     </View>
   );
 };

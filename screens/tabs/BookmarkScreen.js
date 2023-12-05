@@ -6,10 +6,19 @@ import TopNav from './TopNav'
 // MainScreen 컴포넌트
 const BookmarkScreen = ({ nav }) => {
 
+  const path = '/post/find/like/list'
+
+  const par = {
+    memberId: 1,
+    page: 1,
+    size: 1,
+    sortBy: 'RECENT_POST',
+  }
+
   return (
     <View style={styles.container}>
       <TopNav nav={nav}></TopNav>
-      <List nav={nav} />
+      <List nav={nav} path={path} par={par} />
     </View>
   );
 };
