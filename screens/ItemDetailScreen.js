@@ -25,25 +25,19 @@ const ItemDetailScreen = ({ route }) => {
     memberId: 1,
     postId: value.postId
   };
-
-  const likeparams = {
-    memberId: 1,
-    postId: value.postId
-  }
-
-
+  
   const like = () => {
     const tmp = { ...value }
     tmp.like = !tmp.like
     var likeurl
-    if(tmp.like) {
+    if (tmp.like) {
       likeurl = API_IP + '/like/regist/post'
-    }else{
+    } else {
       likeurl = API_IP + '/like/delete/post'
     }
     console.log(likeurl)
 
-    fetch(likeurl,{params})
+    fetch(likeurl, { params })
       .then(response => console.log('성공'))
       .catch(error => console.error('API 호출 중 에러:', error));
 

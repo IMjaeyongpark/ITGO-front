@@ -9,7 +9,7 @@ const MainScreen = ({ nav }) => {
 
   const par = {
     memberId: 1,
-    page: 1,
+    page: 0,
     size: 10,
     sortBy: 'RECENT_POST',
   }
