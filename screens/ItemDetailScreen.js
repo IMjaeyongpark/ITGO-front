@@ -14,45 +14,76 @@ const ItemDetailScreen = ({ route }) => {
   const [value, setValue] = useState(route.params.x)
   const [content, setContent] = useState('')
   const [scrapedUrl, setScrapedUrl] = useState('')
+  const [isLike, setIsLike] = useState(false)
 
   const backStack = () => {
     navigation.goBack()
   }
 
-  const url = API_IP + '/post/view'
 
   const params = {
     memberId: 1,
     postId: value.postId
   };
-  
-  const like = () => {
-    const tmp = { ...value }
-    tmp.like = !tmp.like
-    var likeurl
-    if (tmp.like) {
-      likeurl = API_IP + '/like/regist/post'
-    } else {
-      likeurl = API_IP + '/like/delete/post'
-    }
+
+  const regist = () => {
+    const likeurl = `${process.env.API_IP}/like/regist/post`;
     console.log(likeurl)
-
-    fetch(likeurl, { params })
-      .then(response => console.log('성공'))
+    fetch(`${likeurl}?memberId=${params.memberId}&postId=${params.postId}`)
+      .then(response => {
+        // 응답이 성공적인지 확인합니다 (상태 코드 200)
+        if (!response.ok) {
+          throw new Error(`HTTP 오류! 상태: ${response.status}`);
+        }
+        console.log('성공');
+      })
       .catch(error => console.error('API 호출 중 에러:', error));
+    setIsLike(!isLike)
+  };
 
-    setValue(tmp)
-  }
+  const deletePost = async () => {
+    const url = `${process.env.API_IP}/like/delete/post`;
+    console.log(url)
+    try {
+      const response = await fetch(`${url}?memberId=${params.memberId}&postId=${params.postId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-  const yesLike = <AntDesign name="heart" size={30} color="red" />
-  const noLike = <AntDesign name="hearto" size={30} color="black" />
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('Success', data);
+    } catch (error) {
+      console.error('API 호출 중 에러:', error);
+    }
+    setIsLike(!isLike)
+  };
+
+
+
+  const yesLike = (<TouchableOpacity style={{ marginLeft: "5%" }} onPress={deletePost}>
+    <AntDesign name="heart" size={30} color="red" />
+  </TouchableOpacity>
+  )
+  const noLike = (<TouchableOpacity style={{ marginLeft: "5%" }} onPress={regist}>
+    <AntDesign name="hearto" size={30} color="black" />
+  </TouchableOpacity>
+  )
 
   useEffect(() => {
+    const url = process.env.API_IP + '/post/view'
+    console.log(url)
     const fetchData = async () => {
       try {
         const response = await axios.get(url, { params });
         setContent(response.data.content)
         setScrapedUrl(response.data.scrapedUrl)
+        setIsLike(response.data.isLike)
 
       } catch (error) {
         console.error('데이터를 가져오는 중 오류 발생:', error);
@@ -90,9 +121,7 @@ const ItemDetailScreen = ({ route }) => {
       </ScrollView>
 
       <View style={styles.underView}>
-        <TouchableOpacity style={{ marginLeft: "5%" }} onPress={like}>
-          {value.like ? yesLike : noLike}
-        </TouchableOpacity>
+          {isLike ? yesLike : noLike}
         <TouchableOpacity style={styles.diego} onPress={() => { alert(scrapedUrl) }}>
           <Text style={{ fontSize: 15, color: 'white' }}>사이트로 이동하기</Text>
         </TouchableOpacity></View>

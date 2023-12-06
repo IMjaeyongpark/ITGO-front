@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Button, ScrollView, Image, TouchableOpacity } from 'react-native';
-import No from '../../assets/no.png';
-import Yes from '../../assets/yes.png';
 import axios from 'axios';
-import { API_IP } from "@env"
+import { useFocusEffect } from '@react-navigation/native';
 
-const List = (props) => {
+const LikeList = (props) => {
 
 
     const nav = props.nav
@@ -18,30 +16,37 @@ const List = (props) => {
 
     const [data, setData] = useState([]);
 
-
-    useEffect(() => {
-        const fetchData = async () => {
+    useFocusEffect(
+        React.useCallback(() => {
+          const fetchData = async () => {
             try {
-                const response = await axios.get(url, { params });
-                const newData = response.data.posts.map((v) => ({
-                    "Image": { uri: "https://img.danawa.com/prod_img/500000/148/824/img/17824148_1.jpg?shrink=330:*&_v=20220929125243" },
-                    "title": v.title,
-                    "time": "배방읍 1시간 전",
-                    "price": v.price,
-                    "where": "당근",
-                    "like": v.isLike,
-                    "postId": v.postId,
-                    "nav": nav
-                }));
-                setData(newData); // 데이터를 상태에 설정
+              const response = await axios.get(url, { params });
+              const newData = response.data.posts.map((v) => ({
+                "Image": { uri: "https://img.danawa.com/prod_img/500000/148/824/img/17824148_1.jpg?shrink=330:*&_v=20220929125243" },
+                "title": v.title,
+                "time": "배방읍 1시간 전",
+                "price": v.price,
+                "where": "당근",
+                "like": v.isLike,
+                "postId": v.postId,
+              }));
+              setData(newData); // 데이터를 상태에 설정
             } catch (error) {
-                console.error('데이터를 가져오는 중 오류 발생:', error);
+              console.error('데이터를 가져오는 중 오류 발생:', error);
             }
+          };
+    
+          fetchData(); // useEffect 안에서 비동기 함수 호출
+        }, [url, params]) // 의존성 배열에 url과 params를 추가
+      );
+    
+      useEffect(() => {
+        return () => {
+          // 화면이 포커스를 잃을 때 실행되는 코드 (클린업 등)
+          console.log('Screen is unfocused');
         };
-
-        fetchData(); // useEffect 안에서 비동기 함수 호출
-    }, []); // 빈 배열은 컴포넌트가 마운트될 때 한 번만 실행
-
+      }, []);
+    
     const toggleBookmark = (index) => {
         setData((prevData) => {
             const newData = [...prevData];
@@ -98,4 +103,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default List;
+export default LikeList;
