@@ -3,13 +3,13 @@ import { View, Text, StyleSheet, Button, ScrollView, Image, TouchableOpacity } f
 import No from '../../assets/no.png';
 import Yes from '../../assets/yes.png';
 import axios from 'axios';
-import { API_IP } from "@env"
 
 const List = (props) => {
 
 
     const nav = props.nav
     const url = process.env.API_IP + props.path
+    
     console.log(url)
 
     const params = props.par

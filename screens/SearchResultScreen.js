@@ -8,6 +8,7 @@ import List from './tabs/List';
 const SearchResultScreen = ({ route }) => {
     const navigation = useNavigation();
 
+    
     console.log('route:' + route.params.text)
 
     const backStack = () => {

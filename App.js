@@ -31,8 +31,8 @@ const App = () => {
         <Stack.Screen name="ItemDetailScreen" component={ItemDetailScreen} />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="SearchScreen" component={SearchScreen} />
-        <Stack.Screen name="SearchResultScreen" component={SearchResultScreen} />
         <Stack.Screen name="Compare" component={Compare} />
+        <Stack.Screen name="SearchResultScreen" component={SearchResultScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

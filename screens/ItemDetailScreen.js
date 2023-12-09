@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, Button, Image, ScrollView, TouchableOpacity, Sa
 import Back from '../assets/back.png'
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons, AntDesign, Feather } from '@expo/vector-icons';
-import { API_IP } from "@env"
 import axios from 'axios';
 
 // MainScreen 컴포넌트

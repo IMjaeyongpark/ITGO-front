@@ -15,6 +15,7 @@ const BookmarkScreen = ({ nav }) => {
     sortBy: 'RECENT_POST',
   }
 
+
   return (
     <View style={styles.container}>
       <TopNav nav={nav}></TopNav>

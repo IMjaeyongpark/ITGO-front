@@ -16,7 +16,9 @@ const LikeList = (props) => {
 
     const [data, setData] = useState([]);
 
+
     useFocusEffect(
+        
         React.useCallback(() => {
           const fetchData = async () => {
             try {

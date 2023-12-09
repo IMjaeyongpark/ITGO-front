@@ -8,6 +8,7 @@ import { Ionicons, AntDesign, Feather } from '@expo/vector-icons';
 const SearchScreen = () => {
     const navigation = useNavigation();
 
+
     const backStack = () => {
         navigation.goBack()
     }
@@ -66,6 +67,7 @@ const SearchScreen = () => {
                     <Text style={{ fontSize: 15, color: '#4D4D4D' }} onPress={delAllSearchHistory}>지우기</Text>
                 </TouchableOpacity>
             </View>
+
 
             <View style={{ flex: 1 }}>
                 {searchHistory.map((x, index) => (

@@ -36,7 +36,7 @@ export default function TabLayout({ nav }) {
       <Tab.Screen
         name='즐겨찾기'
         options={{
-          //unmountOnBlur: true,
+          unmountOnBlur: true,
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="hearto" size={size} color={color} />
           ),
