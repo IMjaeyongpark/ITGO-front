@@ -11,6 +11,8 @@ import ItemDetailScreen from './screens/ItemDetailScreen';
 import Profile from './screens/Profile';
 import SearchScreen from './screens/SearchScreen';
 import SearchResultScreen from './screens/SearchResultScreen';
+import Compare from './screens/Compare';
+
 import ReGeolocationScreen from './screens/ReGeolocationScreen';
 import NotificationKeywordSettingScreen from './screens/NotificationKeywordSettingScreen';
 const Stack = createStackNavigator();
@@ -33,6 +35,7 @@ const App = () => {
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="SearchScreen" component={SearchScreen} />
         <Stack.Screen name="SearchResultScreen" component={SearchResultScreen} />
+        <Stack.Screen name="Compare" component={Compare} />
       </Stack.Navigator>
     </NavigationContainer>
   );

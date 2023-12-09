@@ -5,16 +5,12 @@ import Yes from '../../assets/yes.png';
 import axios from 'axios';
 import { API_IP } from "@env"
 
-const List = ({ nav }) => {
+const List = (props) => {
 
-    const url = API_IP + '/post/find/all/list'
-    
-    const params = {
-        memberId: 1,
-        page: 1,
-        size: 10,
-        sortBy: 'RECENT_POST',
-    };
+    const nav = props.nav
+    const url = API_IP + props.path
+    console.log(url)
+    const params = props.par
 
     const [data, setData] = useState([]);
 
@@ -22,16 +18,17 @@ const List = ({ nav }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(url, { params });
+                const response = await axios.get(url, {params} );
                 const newData = response.data.posts.map((v) => ({
                     "Image": { uri: "https://img.danawa.com/prod_img/500000/148/824/img/17824148_1.jpg?shrink=330:*&_v=20220929125243" },
                     "title": v.title,
                     "time": "배방읍 1시간 전",
                     "price": v.price,
                     "where": "당근",
-                    "bookmark": v.isLike,
-                    "postId":v.postId,
-                   }));
+                    "like": v.isLike,
+                    "postId": v.postId,
+                    "nav": nav
+                }));
                 setData(newData); // 데이터를 상태에 설정
             } catch (error) {
                 console.error('데이터를 가져오는 중 오류 발생:', error);
@@ -48,6 +45,8 @@ const List = ({ nav }) => {
             return newData;
         });
     };
+
+
 
     return (
         <ScrollView>

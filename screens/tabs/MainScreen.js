@@ -7,6 +7,14 @@ import { Image } from 'react-native';
 // MainScreen 컴포넌트
 const MainScreen = ({ nav }) => {
 
+  const par = {
+    memberId: 1,
+    page: 1,
+    size: 10,
+    sortBy: 'RECENT_POST',
+  }
+  const path = '/post/find/all/list'
+
   return (
     <View style={styles.container}>
       <TopNav nav={nav}></TopNav>
@@ -19,7 +27,7 @@ const MainScreen = ({ nav }) => {
        
       </View>
       <Text style={styles.text}>최근 본 상품</Text>
-      <List nav={nav} />
+      <List nav={nav} path={path} par={par} />
     </View>
   );
 };
