@@ -8,7 +8,7 @@ import { API_IP } from "@env"
 const List = (props) => {
 
     const nav = props.nav
-    const url = API_IP + props.path
+    const url = process.env.API_IPSS + props.path
     console.log(url)
     const params = props.par
 

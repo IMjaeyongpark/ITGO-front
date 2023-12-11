@@ -12,7 +12,7 @@ const TopNav = ({ nav }) => {
                 <TouchableOpacity style={{ marginEnd:'10%', marginLeft: '50%' }} onPress={() => nav.navigate('SearchScreen')}>
                     <Feather name="search" size={30} color="white" />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => nav.navigate('Compare')}>
+                <TouchableOpacity onPress={() => nav.navigate('NotificationScreen')}>
                     <AntDesign name="bells" size={30} color="white"/>
                 </TouchableOpacity>
             </View>
