@@ -1,16 +1,17 @@
 import React from 'react';
-import { View, Text, Button, TouchableOpacity,StyleSheet } from 'react-native';
+import { View, Text, Button, TouchableOpacity,StyleSheet,Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const StartScreen = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor:'#3454CD'}}>
       <View style={styles.topbox}>
-      <Text style={styles.titletext}>IT 중고거래는 &nbsp;
-        <Text style={styles.titletext2}>ITGO</Text>
-      </Text>
+        <Image
+            source={require('../assets/logo.png')} // 로고 이미지 경로로 수정하세요.
+            style={styles.logo}
+          />
       </View>
       {/*회원가입 버튼 */}
       <View style={styles.bottombox}>
@@ -51,30 +52,35 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   regi: {
-    backgroundColor: '#3454CD',
+    backgroundColor: 'white',
     padding: 16,
     margin: 10,
-    borderRadius: 8,
+    borderRadius: 29.5,
     width: 250, // 원하는 가로 크기로 조절
     alignItems: 'center', // 가로 크기 조절 후 내용을 중앙으로 정렬
   },
   starttext: {
-    color: 'white',
-    fontSize: 24,
-    
+    color: '#3454CD',
+    fontSize: 20,
+    fontWeight:'bold'
   },
   text1:{
     fontSize: 18
   },
   touchtext: {
-    color: 'blue', fontSize: 18
+    color: 'white', fontSize: 18
   },
   bottombox: {
+    marginTop: 300,
     alignItems: 'center',
     marginBottom: 20, // 변경된 부분
   },
   topbox: {
     marginBottom: 50,
+  },
+  logo: {
+    width: 430, // 로고 이미지의 가로 크기를 조절하세요.
+    height: 114, // 로고 이미지의 세로 크기를 조절하세요.
   },
 });
 

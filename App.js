@@ -11,7 +11,8 @@ import ItemDetailScreen from './screens/ItemDetailScreen';
 import Profile from './screens/Profile';
 import SearchScreen from './screens/SearchScreen';
 import SearchResultScreen from './screens/SearchResultScreen';
-import Compare from './screens/Compare';
+import ReGeolocationScreen from './screens/ReGeolocationScreen';
+import NotificationKeywordSettingScreen from './screens/NotificationKeywordSettingScreen';import Compare from './screens/Compare';
 
 const Stack = createStackNavigator();
 
@@ -23,7 +24,8 @@ const App = () => {
         <Stack.Screen name="Start" component={StartScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="PhoneNumber" component={PhoneNumber} />
-
+        <Stack.Screen name="NotificationKeywordSettingScreen" component={NotificationKeywordSettingScreen} />
+        <Stack.Screen name="ReGeolocationScreen" component={ReGeolocationScreen} />
         <Stack.Screen name="Geolocation" component={Geolocation} />
         <Stack.Screen name="Main" component={Main} options={{
           gestureEnabled: false, // 뒤로 가기 제스처를 비활성화

@@ -7,7 +7,7 @@ import axios from 'axios';
 
 // MainScreen 컴포넌트
 const ItemDetailScreen = ({ route }) => {
-
+  
   const navigation = useNavigation();
 
   const [value, setValue] = useState(route.params.x)

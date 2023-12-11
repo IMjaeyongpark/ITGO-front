@@ -29,16 +29,16 @@ const MyScreen = ({ nav }) => {
           <Text style={{ fontSize: 20 }}>닉네임</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity>
+      {/* <TouchableOpacity>
         <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 50 }}>
           <Image source={Locate}
             style={{ width: 25, height: 36, marginLeft: 40 }}></Image>
 
           <Text style={{ fontSize: 20, marginLeft: 40 }}>위치 설정</Text>
         </View>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => nav.navigate('ReGeolocationScreen')}>
         <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 30 }}>
           <Image source={Locate}
             style={{ width: 25, height: 36, marginLeft: 40 }}></Image>
@@ -53,7 +53,7 @@ const MyScreen = ({ nav }) => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => nav.navigate('NotificationKeywordSettingScreen')}>
         <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 30 }}>
           <Text style={{ fontSize: 20, marginLeft: 105 }}>알림 키워드 설정</Text>
         </View>

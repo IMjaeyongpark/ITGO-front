@@ -7,7 +7,7 @@ import { TextInput } from 'react-native-gesture-handler';
 import {REST_API_KEY} from "@env"
 
 
-const Geolocation = () => {
+const ReGeolocationScreen = () => {
 
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -55,22 +55,6 @@ const Geolocation = () => {
   );
   }
 
-
-  const errorAlert = () =>{
-  Alert.alert(
-    "위치를 탐색중입니다.",
-    "잠시만 기다려주세요.",
-    [
-      {
-        text: "네",
-        onPress: () => console.log("아니라는데"),
-        style: "cancel",
-      }],
-    { cancelable: false }
-  );
-  }
-
-
   const requestGeoCoord2Address = async () => {
     try {
       const response = await axios.get(
@@ -96,7 +80,6 @@ const Geolocation = () => {
       goAlert();
     } catch (error) {
       console.error(error); // 에러 처리 로직을 추가하세요
-      errorAlert();
     }
   };
 
@@ -118,31 +101,15 @@ const Geolocation = () => {
   return (
     <View style={styles.container}>
       <View style={styles.explanationcontainer}>
-        <Text style={styles.explanation}>사용자 위치를 설정해주세요.</Text>
-      
-      
-        <TextInput
-            placeholder='동명(읍,면)으로 검색(ex.서초동)'
-            placeholderTextColor={'#616161'}
-            fontSize="20px"
-            onChangeText={setGeolocationName}
-            keyboardType='phone-pad'
-            style={styles.textInput}
-          />
+        <Text style={styles.explanation}>동네 인증하기</Text>
+        <Text style={styles.explanation2}>현재 위치가 내 동내로 설정한'
+          <Text>{autogeolocationName}</Text>&nbsp;
+        '에 있습니다.
+        </Text>
         <TouchableOpacity  style={styles.buttonstyle} onPress={requestGeoCoord2Address}>
-          <Text style={styles.buttonText}>현재위치로 찾기</Text>
+          <Text style={styles.buttonText}>동네인증 완료하기</Text>
         </TouchableOpacity>
-     
-      
-      
-        
       <Text style={styles.paragraph}>{text}</Text>
-
-      <Button
-            title="main"
-            onPress={() => navigation.navigate('Main')}
-          />
-      
       </View>
     </View>
   );
@@ -165,6 +132,9 @@ const styles = StyleSheet.create({
       fontWeight:'bold',
       textAlign: 'center',
       marginBottom:20
+    },
+    explanation2:{
+      fontSize:15,
     },
     searchcontainer:{
       
@@ -194,4 +164,4 @@ const styles = StyleSheet.create({
   
 
 })
-export default Geolocation
+export default ReGeolocationScreen

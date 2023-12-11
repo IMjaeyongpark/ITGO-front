@@ -48,10 +48,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor:'#3454CD'
   },
   logo: {
-    width: 150, // 로고 이미지의 가로 크기를 조절하세요.
-    height: 150, // 로고 이미지의 세로 크기를 조절하세요.
+    width: 430, // 로고 이미지의 가로 크기를 조절하세요.
+    height: 114, // 로고 이미지의 세로 크기를 조절하세요.
   },
 });
 
