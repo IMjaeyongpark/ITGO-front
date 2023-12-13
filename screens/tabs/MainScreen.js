@@ -26,7 +26,7 @@ const MainScreen = ({ nav }) => {
       
       </View>
       <Text style={styles.text}>최근 본 상품</Text>
-      <List nav={nav} path={path} par={par}/>
+      <List nav={nav} par = {par} path={path}/>
     </View>
   );
 };

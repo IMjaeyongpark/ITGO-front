@@ -9,9 +9,11 @@ const PhoneNumber = () => {
   const navigation = useNavigation();
   const [code,setCode]=useState('');
   const recaptchaVerifier = useRef(null);
+  //폰 번호
   const [phoneNumber, setPhoneNumber] =useState("+82");
+  //파이어베이스 인증 아이디
   const [verificationId, setVerificationId] =useState();
-  const [verificationError, setVerificationError] = useState();
+  //파이어베이스 인증 함수
   const sendVerification=()=>{
     const phoneProvider = new firebase.auth.PhoneAuthProvider();
     const formattedPhoneNumber = "+82" + phoneNumber; // "+82"를 전화번호에 추가합니다.

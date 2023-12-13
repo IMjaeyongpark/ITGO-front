@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, Button, ScrollView, Image, TouchableOpacity } f
 import No from '../../assets/no.png';
 import Yes from '../../assets/yes.png';
 import axios from 'axios';
-import { API_IP } from "@env"
 
 const List = (props) => {
 

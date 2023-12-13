@@ -4,6 +4,7 @@ import Back from '../assets/back.png'
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons, AntDesign, Feather } from '@expo/vector-icons';
 import axios from 'axios';
+import * as Linking from 'expo-linking';
 
 // MainScreen 컴포넌트
 const ItemDetailScreen = ({ route }) => {
@@ -18,7 +19,6 @@ const ItemDetailScreen = ({ route }) => {
   const backStack = () => {
     navigation.goBack()
   }
-
 
   const params = {
     memberId: 1,
@@ -89,9 +89,14 @@ const ItemDetailScreen = ({ route }) => {
       }
     };
 
+
     fetchData(); // useEffect 안에서 비동기 함수 호출
   }, []); // 빈 배열은 컴포넌트가 마운트될 때 한 번만 실행
 
+  const uri = "https://naver.com"
+  const link = (posturi) => {
+    Linking.openURL(posturi)
+}
 
   return (
     <View>
@@ -121,7 +126,7 @@ const ItemDetailScreen = ({ route }) => {
 
       <View style={styles.underView}>
           {isLike ? yesLike : noLike}
-        <TouchableOpacity style={styles.diego} onPress={() => { alert(scrapedUrl) }}>
+        <TouchableOpacity style={styles.diego} onPress={()=>link(uri)}>
           <Text style={{ fontSize: 15, color: 'white' }}>사이트로 이동하기</Text>
         </TouchableOpacity></View>
     </View>

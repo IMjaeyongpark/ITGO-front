@@ -10,12 +10,12 @@ const LikeList = (props) => {
     const url = process.env.API_IP + props.path
     console.log(url)
 
+
     const params = props.par
 
     console.log(params)
 
     const [data, setData] = useState([]);
-
 
     useFocusEffect(
         

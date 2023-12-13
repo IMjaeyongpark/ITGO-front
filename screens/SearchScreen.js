@@ -68,7 +68,6 @@ const SearchScreen = () => {
                 </TouchableOpacity>
             </View>
 
-
             <View style={{ flex: 1 }}>
                 {searchHistory.map((x, index) => (
                     <View style={{ flexDirection: 'row', marginLeft: "8%", marginTop: "4%", alignItems: "center" }}>
