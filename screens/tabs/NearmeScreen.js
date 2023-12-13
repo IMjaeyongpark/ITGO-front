@@ -1,4 +1,5 @@
 import React from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 import { StyleSheet, SafeAreaView, View } from 'react-native';
 import List from './List'
 import TopNav from './TopNav'
@@ -9,7 +10,6 @@ const NearmeScreen = ({ nav }) => {
   return (
     <View style={styles.container}>
       <TopNav nav={nav}></TopNav>
-      <List nav={nav} />
     </View>
   );
 };

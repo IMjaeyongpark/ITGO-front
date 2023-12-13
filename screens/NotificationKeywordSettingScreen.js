@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, Image, SafeAreaView, TextInput } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, Image, SafeAreaView, TextInput,AsyncStorage } from 'react-native';
 import Back from '../assets/back.png';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons, AntDesign, Feather } from '@expo/vector-icons';
 import axios from 'axios';
+import { saveDataToStorage, loadDataFromStorage } from '../storage/AsyncStorageUtil';
+
+
 //알림 키워드 설정 스크린
 const NotificationKeywordSettingScreen = () => {
     const navigation = useNavigation();
@@ -16,7 +19,8 @@ const NotificationKeywordSettingScreen = () => {
         { location: '탕정면', isSelected: false }
     ])
     useEffect(() => {
-        
+         // 컴포넌트가 마운트될 때 AsyncStorage에서 데이터를 로드합니다.
+        loadSearchGeoFromStorage();
     },[])
 
 
@@ -111,14 +115,32 @@ const NotificationKeywordSettingScreen = () => {
         keywordDeleteAllPost()
         setSearchHistory([])
     }
+
+    const loadSearchGeoFromStorage = async () => {
+        const storedSearchGeo = await loadDataFromStorage('searchGeo');
+        if (storedSearchGeo) {
+          setSearchGeo(storedSearchGeo);
+        }
+      };
     //체크박스 선택
     const toggleLocationSelection = (index) => {
         const updatedLocations = [...searchGeo];
         updatedLocations[index].isSelected = !updatedLocations[index].isSelected;
         setSearchGeo(updatedLocations);
-        console.log(searchGeo)
+        // console.log(searchGeo)
+         // 업데이트된 상태를 AsyncStorage에 저장합니다.
+        saveDataToStorage('searchGeo', updatedLocations);   
+
+        // AsyncStorage에 데이터가 들어왔는지 확인하는 콘솔 출력
+        checkAsyncStorage('searchGeo');
     }
 
+    const checkAsyncStorage = async (key) => {
+        // AsyncStorage에서 데이터를 확인하여 콘솔에 출력
+        const data = await loadDataFromStorage(key);
+        console.log("------------------------------------------");
+        console.log(`AsyncStorage 확인 - 키: ${key}, 데이터:`, data);
+      };
    
     return (
         <SafeAreaView style={{ flex: 1 }}>

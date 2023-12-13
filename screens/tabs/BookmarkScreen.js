@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, SafeAreaView, View } from 'react-native';
-import List from './List'
+import LikeList from './LikeList'
 import TopNav from './TopNav'
 
 // MainScreen 컴포넌트
@@ -10,15 +10,16 @@ const BookmarkScreen = ({ nav }) => {
 
   const par = {
     memberId: 1,
-    page: 1,
+    page: 0,
     size: 10,
     sortBy: 'RECENT_POST',
   }
 
+
   return (
     <View style={styles.container}>
       <TopNav nav={nav}></TopNav>
-      <List nav={nav} path={path} par={par} />
+      <LikeList nav={nav} path={path} par={par} />
     </View>
   );
 };

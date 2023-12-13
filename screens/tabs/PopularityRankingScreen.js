@@ -10,7 +10,6 @@ const PopularityRankingScreen = ({ nav }) => {
   return (
     <View style={styles.container}>
       <TopNav nav={nav}></TopNav>
-      <List nav={nav} />
     </View>
   );
 };

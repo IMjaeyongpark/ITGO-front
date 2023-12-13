@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, SafeAreaView, Text, View } from 'react-native';
+import { StyleSheet, SafeAreaView, Text, View,Image} from 'react-native';
 import List from './List'
-import axios from 'axios';
 import TopNav from './TopNav'
-import { Image } from 'react-native';
-// MainScreen 컴포넌트
+// MainScreen 컴포넌트 
 const MainScreen = ({ nav }) => {
 
   const par = {
     memberId: 1,
-    page: 1,
-    size: 10,
+    page: 0,
+    size: 100,
     sortBy: 'RECENT_POST',
   }
   const path = '/post/find/all/list'
@@ -23,11 +21,11 @@ const MainScreen = ({ nav }) => {
         <Text style={styles.toptext}>
           어떤 전자기기와 이어드릴까요?
         </Text>
-        <Image style={styles.img} source={require('/Users/ichungmin/Desktop/Itgo/assets/interface.png')}/>
-       
+        <Image style={styles.img} source={require('../../assets/interface.png')}/>
+      
       </View>
       <Text style={styles.text}>최근 본 상품</Text>
-      <List nav={nav} path={path} par={par} />
+      <List nav={nav} par = {par} path={path}/>
     </View>
   );
 };

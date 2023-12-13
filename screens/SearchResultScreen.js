@@ -5,25 +5,37 @@ import { Ionicons, AntDesign, Feather } from '@expo/vector-icons';
 import List from './tabs/List';
 
 
-const SearchResultScreen = () => {
+const SearchResultScreen = ({ route }) => {
     const navigation = useNavigation();
+
+    
+    console.log('route:' + route.params.text)
 
     const backStack = () => {
         navigation.goBack()
     }
 
-    const [text, setText] = useState('')
+    const [text, setText] = useState(route.params.text)
 
     const onChangeText = (inputText) => {
         setText(inputText)
     }
 
+    const par = {
+        memberId: 1,
+        keyword: text,
+        page: 0,
+        size: 10,
+        sortBy: 'RECENT_POST',
+    }
+    const path = '/search/keyword'
+
     return (
-        <SafeAreaView style={{ flex: 1}}>
+        <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.searchView}>
-            <TouchableOpacity style={{marginRight:'5%'}} onPress={backStack}>
-                <AntDesign name="left" size={24} color="black" />
-            </TouchableOpacity>
+                <TouchableOpacity style={{ marginRight: '5%' }} onPress={backStack}>
+                    <AntDesign name="left" size={24} color="black" />
+                </TouchableOpacity>
                 <View style={{
                     width: "80%", height: '70%', backgroundColor: "#E9E4E4", borderRadius: '10%',
                     flexDirection: 'row',
@@ -32,12 +44,12 @@ const SearchResultScreen = () => {
                         placeholder='제품명을 입력하세요'
                         onChangeText={onChangeText}
                     ></TextInput>
-                    <TouchableOpacity style={{ justifyContent: "center", alignItems: "center" }} onPress={() => navigation.navigate('SearchResultScreen')}>
+                    <TouchableOpacity style={{ justifyContent: "center", alignItems: "center" }} onPress={() => navigation.push('SearchResultScreen', { text })}>
                         <Feather name="search" size={30} color="black" style={{ opacity: 0.4 }} />
                     </TouchableOpacity>
                 </View>
             </View>
-            <List nav={navigation}/>
+            <List nav={navigation} path={path} par={par} />
         </SafeAreaView>
     );
 };

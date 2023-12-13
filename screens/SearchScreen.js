@@ -8,6 +8,7 @@ import { Ionicons, AntDesign, Feather } from '@expo/vector-icons';
 const SearchScreen = () => {
     const navigation = useNavigation();
 
+
     const backStack = () => {
         navigation.goBack()
     }
@@ -18,7 +19,7 @@ const SearchScreen = () => {
         setText(inputText)
     }
 
-    const [searchHistory, setSearchHistory] = useState(['아이폰 15', '아이폰 15 맥스', "search"])
+    const [searchHistory, setSearchHistory] = useState([])
 
     const deleteSearchHistory = (idx) => {
         const tmp = [...searchHistory]
@@ -32,7 +33,8 @@ const SearchScreen = () => {
 
     const addSearchHistory = () => {
         const tmp = [text, ...searchHistory]
-        setSearchHistory(tmp)
+        
+        navigation.push('SearchResultScreen', { text })
     }
 
     return (
@@ -48,7 +50,7 @@ const SearchScreen = () => {
                     ></TextInput>
                     <TouchableOpacity style={{ justifyContent: "center", alignItems: "center" }} onPress={() => {
                         addSearchHistory()
-                        navigation.navigate('SearchResultScreen')
+                        navigation.navigate('SearchResultScreen',{text})
                     }}>
                         <Feather name="search" size={30} color="black" style={{ opacity: 0.4 }} />
                     </TouchableOpacity>
@@ -65,6 +67,7 @@ const SearchScreen = () => {
                     <Text style={{ fontSize: 15, color: '#4D4D4D' }} onPress={delAllSearchHistory}>지우기</Text>
                 </TouchableOpacity>
             </View>
+
 
             <View style={{ flex: 1 }}>
                 {searchHistory.map((x, index) => (
