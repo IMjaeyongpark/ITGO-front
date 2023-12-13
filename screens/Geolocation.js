@@ -5,6 +5,7 @@ import * as Location from 'expo-location';
 import { useNavigation } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
 import {REST_API_KEY} from "@env"
+import { saveDataToStorage, loadDataFromStorage } from '../storage/AsyncStorageUtil';
 
 
 const Geolocation = () => {
@@ -16,7 +17,7 @@ const Geolocation = () => {
   const [coordinate_X,setCoordinate_X] = useState(null);
   const [coordinate_Y,setCoordinate_Y] = useState(null);
   const [text,setText] = useState('');
-  const [autogeolocationName,setAutoGeolocationName]= useState("충남 아산시 탕정면");
+  const [autogeolocationName,setAutoGeolocationName]= useState("");
 
   useEffect(() => {
     (async () => {
@@ -40,6 +41,26 @@ const Geolocation = () => {
   const goAlert = () =>{
     const displayValue = autogeolocationName || ""; // null이나 falsy한 값이라면 빈 문자열로 처리
 
+  //회원가입 
+  const join = async()=>{
+    try {
+      const params={
+          phone: loadDataFromStorage("member_id"),
+          name: null,
+          imgAdress:null,
+          // location:{
+          //   city:,
+          //   street:,
+          //   zipcode: null
+          // }
+      }
+      const response = await axios.post(process.env.API_IPSSS+'/auth/signup', { params });
+      console.log("response.data",response.data);
+      setData(newData); // 데이터를 상태에 설정
+  } catch (error) {
+      console.error('데이터를 가져오는 중 오류 발생:', error);
+  }
+  }
   Alert.alert(
     "현재 주소가 일치하시나요?",
     displayValue,
@@ -49,7 +70,15 @@ const Geolocation = () => {
         onPress: () => console.log("아니라는데"),
         style: "cancel",
       },
-      { text: "네", onPress: () => navigation.navigate('Main') },
+      {
+        text: "네",
+        onPress: () => {
+          // 회원가입 로직 - 주소
+          join();
+          // 다른 함수 호출 또는 로직 추가 가능
+          navigation.navigate('Main');
+        },
+      },
     ],
     { cancelable: false }
   );
