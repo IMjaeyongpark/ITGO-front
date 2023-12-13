@@ -6,7 +6,7 @@ import TopNav from './TopNav'
 const MainScreen = ({ nav }) => {
 
   const par = {
-    memberId: 1,
+    memberId: 90,
     page: 0,
     size: 100,
     sortBy: 'RECENT_POST',
