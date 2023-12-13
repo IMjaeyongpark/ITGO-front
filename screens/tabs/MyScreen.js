@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Button, Image, TouchableOpacity } from 'react-n
 import Locate from '../../assets/locate.png'
 import BasicProfile from '../../assets/basicProfile.jpg';
 import TopNav from './TopNav'
+import { saveDataToStorage, loadDataFromStorage } from '../../storage/AsyncStorageUtil';
 
 
 // MainScreen 컴포넌트
@@ -11,10 +12,22 @@ const MyScreen = ({ nav }) => {
   profile = BasicProfile
 
   const [onOff, setOnOff] = useState(true)
-
+  // 알림설정 onoff 설정
   const clickButton = () => {
     setOnOff(!onOff)
-  }
+
+    //asyncStorage.setItem
+    saveDataToStorage("Notification_onoff",!onOff)
+    
+    checkAsyncStorage('Notification_onoff')
+  } 
+  const checkAsyncStorage = async (key) => {
+    // AsyncStorage에서 데이터를 확인하여 콘솔에 출력
+    const data = await loadDataFromStorage(key);
+    console.log("------------------------------------------");
+    console.log(`AsyncStorage 확인 - 키: ${key}, 데이터:`, data);
+  };
+
 
 
   return (

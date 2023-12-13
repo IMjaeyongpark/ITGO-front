@@ -115,7 +115,7 @@ const NotificationKeywordSettingScreen = () => {
         keywordDeleteAllPost()
         setSearchHistory([])
     }
-
+    //asyncStorage로 알림받을동네 체크 박스 유지하기
     const loadSearchGeoFromStorage = async () => {
         const storedSearchGeo = await loadDataFromStorage('searchGeo');
         if (storedSearchGeo) {

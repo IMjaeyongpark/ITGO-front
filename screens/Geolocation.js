@@ -5,6 +5,7 @@ import * as Location from 'expo-location';
 import { useNavigation } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
 import {REST_API_KEY} from "@env"
+import { saveDataToStorage, loadDataFromStorage } from '../storage/AsyncStorageUtil';
 
 
 const Geolocation = () => {
@@ -16,7 +17,7 @@ const Geolocation = () => {
   const [coordinate_X,setCoordinate_X] = useState(null);
   const [coordinate_Y,setCoordinate_Y] = useState(null);
   const [text,setText] = useState('');
-  const [autogeolocationName,setAutoGeolocationName]= useState("충남 아산시 탕정면");
+  const [autogeolocationName,setAutoGeolocationName]= useState("");
 
   useEffect(() => {
     (async () => {

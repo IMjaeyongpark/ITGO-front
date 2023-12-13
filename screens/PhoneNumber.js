@@ -4,6 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 import { firebaseConfig } from './config';
 import {FirebaseRecaptchaVerifierModal} from 'expo-firebase-recaptcha';
 import firebase from 'firebase/compat/app';
+import { saveDataToStorage, loadDataFromStorage } from '../storage/AsyncStorageUtil';
+
 
 const PhoneNumber = () => {
   const navigation = useNavigation();
@@ -42,6 +44,8 @@ const PhoneNumber = () => {
     Alert.alert(
       '회원가입 성공!'
     )
+    //asyncstorage에 member_id 저장
+    saveDataToStorage('member_id',phoneNumber);
     navigation.navigate('Geolocation')
 
   }
