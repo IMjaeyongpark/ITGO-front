@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, SafeAreaView, Text, View,Image} from 'react-native';
 import List from './List'
-import axios from 'axios';
 import TopNav from './TopNav'
 // MainScreen 컴포넌트 
 const MainScreen = ({ nav }) => {
@@ -23,9 +22,7 @@ const MainScreen = ({ nav }) => {
           어떤 전자기기와 이어드릴까요?
         </Text>
         <Image style={styles.img} source={require('../../assets/interface.png')}/>
-      
       </View>
-      <Text style={styles.text}>최근 본 상품</Text>
       <List nav={nav} par = {par} path={path}/>
     </View>
   );

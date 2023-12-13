@@ -3,10 +3,14 @@ import { StyleSheet, TouchableOpacity, Text, View, Image, SafeAreaView, TextInpu
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons, AntDesign, Feather } from '@expo/vector-icons';
 import List from './tabs/List';
+import { saveDataToStorage, loadDataFromStorage } from '../storage/AsyncStorageUtil';
 
 
 const SearchResultScreen = ({ route }) => {
     const navigation = useNavigation();
+
+
+    const [searchHistory, setSearchHistory] = useState([])
     
     console.log('route:' + route.params.text)
 
@@ -18,6 +22,32 @@ const SearchResultScreen = ({ route }) => {
 
     const onChangeText = (inputText) => {
         setText(inputText)
+    }
+
+    useEffect(() => {
+        const checkAsyncStorage = async (key) => {
+            // AsyncStorage에서 데이터를 확인하여 콘솔에 출력
+            try {
+                const tmp = await loadDataFromStorage(key);
+
+                console.log("------------------------------------------");
+                console.log(`AsyncStorage 확인 - 키: ${key}, 데이터:`, tmp);
+                setSearchHistory(tmp)
+
+
+            } catch (e) { console.log("error") }
+        }
+        checkAsyncStorage('searchHistory')
+
+    }, []);
+
+    const addSearchHistory = () => {
+        const tmp = [text, ...searchHistory]
+        saveDataToStorage('searchHistory', tmp)
+        setSearchHistory(tmp)
+        console.log(searchHistory)
+
+        navigation.push('SearchResultScreen', { text })
     }
 
     const par = {
@@ -43,7 +73,9 @@ const SearchResultScreen = ({ route }) => {
                         placeholder='제품명을 입력하세요'
                         onChangeText={onChangeText}
                     ></TextInput>
-                    <TouchableOpacity style={{ justifyContent: "center", alignItems: "center" }} onPress={() => navigation.push('SearchResultScreen', { text })}>
+                    <TouchableOpacity style={{ justifyContent: "center", alignItems: "center" }} onPress={() => {
+                        addSearchHistory(text)
+                        navigation.push('SearchResultScreen', { text })}}>
                         <Feather name="search" size={30} color="black" style={{ opacity: 0.4 }} />
                     </TouchableOpacity>
                 </View>

@@ -1,42 +1,15 @@
-{"modelname":"SM-S908N",
-"image":"https://cdn.cetizen.com/CDN/review/thumb_350/7789.jpg",
-"basic":{
-"name":"갤럭시S22 울트라(256GB)",
-"manufacturer":"삼성전자",
-"releaseDate":"2022. 02",
-"price":null,
-"OS":"안드로이드 12",
-"size":"77.9 x 163.3 x 8.9",
-"weight":"228g"
-},
-"screen":{
-"screen_size":"6.8 인치",
-"scanning_rate":"1-120 Hz",
-"screen_type":"Dynamic AMOLED 2X",
-"resolution":"1440 x 3080",
-"screen_width":"73.15 mm",
-"screen_height":"156.46 mm"
-},
-"chipSet":{
-"AP":"퀄컴 스냅드레곤 8 Gen 1",
-"CPU":"1x 2.995 GHz Cortex-X2, 3x 2.496 GHz Cortex-A710, 4x 1.78GHz Cortex-A510",
-"CPU_core":"8개 (64 비트)",
-"GPU":"퀄컴 Adreno 730"
-},
-"camera":{
-"flash":"LED",
-"photo_resolution":"108 MP (mega",
-"image_resolution":"7680 x 4320",
-"video_frame":"24 FPS"
-},
-"front_camera":{
-"front_photo_resolution":"40 MP",
-"front_image_resolution":"3840 x 2160",
-"front_video_frame":"60 FPS"
-},
-"battery":{
-"battery":"5,000 mAh",
-"type":"Li-Polymer",
-"wireless_charging":"무선충전 지원"
-},
-"biometric_recognition":"디스플레이 초음파 지문인식"}
+{
+    "modelname":"삼성전자 갤럭시북3 프로 NT940XFG-KC51G",
+    "kind":"노트북",
+    "OS":"윈도우11홈",
+    "screen":{
+        "LCD":" 35.6cm(14인치)",
+        "Resolution":"2880x1800(WQXGA+)",
+        "brightness":"400nit",
+        "scanning_rate":"120Hz"
+    },
+    "CPU":{
+        "name":"인텔"
+
+    }
+}	

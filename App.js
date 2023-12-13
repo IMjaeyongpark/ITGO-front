@@ -15,6 +15,7 @@ import LabtopCompare from './screens/LabtopCompare';
 import NotificationScreen from './screens/NotificationScreen';
 import ReGeolocationScreen from './screens/ReGeolocationScreen';
 import NotificationKeywordSettingScreen from './screens/NotificationKeywordSettingScreen';
+
 const Stack = createStackNavigator();
 
 const App = () => {
