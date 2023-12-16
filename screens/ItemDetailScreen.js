@@ -4,24 +4,24 @@ import Back from '../assets/back.png'
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons, AntDesign, Feather } from '@expo/vector-icons';
 import axios from 'axios';
+import Swiper from 'react-native-swiper';
 import * as Linking from 'expo-linking';
-import Swiper from 'react-native-web-swiper';
 
 // MainScreen 컴포넌트
 const ItemDetailScreen = ({ route }) => {
-  
+
   const navigation = useNavigation();
 
   const [value, setValue] = useState(route.params.x)
+  const [image, setImage] = useState(value.Image)
   const [content, setContent] = useState('')
   const [scrapedUrl, setScrapedUrl] = useState('')
   const [isLike, setIsLike] = useState(false)
-  const [postURI,setPostURI] = useState('')
-
 
   const backStack = () => {
     navigation.goBack()
   }
+
 
   const params = {
     memberId: 1,
@@ -66,8 +66,6 @@ const ItemDetailScreen = ({ route }) => {
     setIsLike(!isLike)
   };
 
-
-
   const yesLike = (<TouchableOpacity style={{ marginLeft: "5%" }} onPress={deletePost}>
     <AntDesign name="heart" size={30} color="red" />
   </TouchableOpacity>
@@ -86,20 +84,15 @@ const ItemDetailScreen = ({ route }) => {
         setContent(response.data.content)
         setScrapedUrl(response.data.scrapedUrl)
         setIsLike(response.data.isLike)
-        setPostURI(response.data.scrapedUrl)
+
       } catch (error) {
         console.error('데이터를 가져오는 중 오류 발생:', error);
       }
     };
 
-
     fetchData(); // useEffect 안에서 비동기 함수 호출
   }, []); // 빈 배열은 컴포넌트가 마운트될 때 한 번만 실행
 
-
-  const link = (posturi) => {
-    Linking.openURL(posturi)
-}
 
   return (
     <View>
@@ -108,11 +101,21 @@ const ItemDetailScreen = ({ route }) => {
           <AntDesign name="left" size={30} color="black" />
         </TouchableOpacity>
       </SafeAreaView>
+      <ScrollView style={{ height: "89%", backgroundColor: 'white' }} contentContainerStyle={{}}>
 
-      <ScrollView style={{ height: "89%", backgroundColor: 'white' }}>
-        <View style={styles.container}>
-          <Image source={{uri:value.Image[0]}} style={{ width: "100%", paddingBottom: '100%', }} />
-          <View style={{ borderBottomColor: '#C9C3C3', borderBottomWidth: 0.8, width: '100%', borderTopColor: '#C9C3C3', borderTopWidth: 0.8 }}>
+        <Swiper allowTouchMove={true} height={400}>
+          {image.map((x) => (
+            <View style={{
+               alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+              <Image source={{ uri: x }} style={{ width: "100%", paddingBottom: '100%', }} />
+            </View>
+
+          ))}
+
+        </Swiper>
+        <View style={{ borderBottomColor: '#C9C3C3', borderBottomWidth: 0.8, width: '100%'}}>
             <View style={{ marginTop: "2%", width: "80%" }}>
               <Text style={{ fontSize: 30, marginTop: '5%', fontWeight: 'bold', marginLeft: '5%' }}>{value.price.toLocaleString('ko-KR')}원</Text>
             </View>
@@ -120,16 +123,14 @@ const ItemDetailScreen = ({ route }) => {
               <Text style={{ fontSize: 18 }}>{value.title}</Text>
             </View>
           </View>
-          <View style={{ marginTop: "5%", width: "80%" }}>
+          <View style={{ marginTop: "5%", width: "80%",marginLeft:20 }}>
             <Text style={{ fontSize: 15 }}>{content}</Text>
           </View>
           <View style={{ height: 180 }} />
-        </View>
       </ScrollView>
-
       <View style={styles.underView}>
-          {isLike ? yesLike : noLike}
-        <TouchableOpacity style={styles.diego} onPress={()=>link(postURI)}>
+        {isLike ? yesLike : noLike}
+        <TouchableOpacity style={styles.diego} onPress={() => {  Linking.openURL(scrapedUrl) }}>
           <Text style={{ fontSize: 15, color: 'white' }}>사이트로 이동하기</Text>
         </TouchableOpacity></View>
     </View>

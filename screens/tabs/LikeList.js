@@ -13,7 +13,6 @@ const LikeList = (props) => {
     const params = props.par
     
 
-
     console.log(params)
 
     const [data, setData] = useState([]);
@@ -29,14 +28,20 @@ const LikeList = (props) => {
                 var tmp = v.imgFolderAddress
                 tmp = tmp.replace('[', '')
                 tmp = tmp.replace(']', '')
+                tmp = tmp.replace(/ /g, '')
                 tmp = tmp.replace(/\'/g, '')
                 tmp = tmp.split(',')
+                if(v.memberName=='joongna'){
+                    v.memberName="중고나라"
+                    
+                }
+
                 return {
                     "Image": tmp,
                     "title": v.title,
                     "time": "배방읍 1시간 전",
                     "price": v.price,
-                    "where": "당근",
+                    "where": v.memberName,
                     "like": v.isLike,
                     "postId": v.postId,
                     "nav": nav
@@ -84,12 +89,12 @@ const LikeList = (props) => {
                             <View style={{ width: '65%', height: '100%' }}>
                                 <Text style={{ fontSize: 17, marginTop: "5%" }}>{x["title"]}</Text>
                                 <Text style={{ fontSize: 12, marginTop: "3%" }}>{x["time"]}</Text>
-                                <View style={{ felx: 1, flexDirection: 'row', flex: 1, alignItems: 'flex-end' }}>
+                                <View style={{ flexDirection: 'row', flex: 1, alignItems: 'flex-end' }}>
                                     <View style={{ width: '45%' }}>
                                         <Text style={{ fontSize: 20, marginBottom: 10 }}>{x["price"].toLocaleString('ko-KR')}원</Text>
                                     </View>
-                                    <View style={{ width: '20%' }}>
-                                        <Text style={{ fontSize: 20, marginBottom: 10, marginLeft: "10%" }}>{x["where"]}</Text>
+                                    <View>
+                                        <Text style={{ fontSize: 20,marginBottom: 10, marginLeft: "10%" }}>{x["where"]}</Text>
                                     </View>
 
                                 </View>
@@ -100,7 +105,6 @@ const LikeList = (props) => {
             ))}
         </ScrollView>
     );
-
 };
 
 const styles = StyleSheet.create({
