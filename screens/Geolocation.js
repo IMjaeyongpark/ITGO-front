@@ -17,8 +17,10 @@ const Geolocation = () => {
   const [coordinate_X,setCoordinate_X] = useState(null);
   const [coordinate_Y,setCoordinate_Y] = useState(null);
   const [text,setText] = useState('');
-  const [autogeolocationName,setAutoGeolocationName]= useState("");
-
+  const [autogeolocationName,setAutoGeolocationName]= useState("지역 찾는중");
+  const [zone_no,setZone_no] = useState(null);
+  const [city,setCity] = useState(null);
+  const [street,setStreet] = useState(null);
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -44,16 +46,19 @@ const Geolocation = () => {
   //회원가입 
   const join = async()=>{
     try {
+      console.log("memberid",phoneNumber)
       const params={
           phone: loadDataFromStorage("member_id"),
-          name: null,
-          imgAdress:null,
-          // location:{
-          //   city:,
-          //   street:,
-          //   zipcode: null
-          // }
+          name: "",
+          imgAdress:"",
+          location:{
+            city:city,
+            street:street,
+            zipcode: zone_no
+          }
       }
+      console.log(params)
+      console.log("phonenumber",loadDataFromStorage("member_id"))
       const response = await axios.post(process.env.API_IPSSS+'/auth/signup', { params });
       console.log("response.data",response.data);
       setData(newData); // 데이터를 상태에 설정
@@ -117,6 +122,11 @@ const Geolocation = () => {
       );
   
       console.log("ss",response.data.documents[0].road_address.region_1depth_name); // 응답 데이터를 출력하거나 원하는 로직을 수행하세요
+      console.log("ss",response.data.documents[0]); // 응답 데이터를 출력하거나 원하는 로직을 수행하세요
+      console.log("ss",response.data.documents[0].road_address.zone_no); // 응답 데이터를 출력하거나 원하는 로직을 수행하세요
+      setZone_no(response.data.documents[0].road_address.zone_no)
+      setCity(response.data.documents[0].region_2depth_name)
+      setStreet(response.data.documents[0].region_3depth_name)
       setAutoGeolocationName(
         response.data.documents[0].road_address.region_1depth_name+" "+
         response.data.documents[0].road_address.region_2depth_name+" "+

@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import TMP from '../assets/tmp3.png';
 
 // MainScreen 컴포넌트
-const Compare = () => {
+const DeviceCompare = () => {
 
     const navigation = useNavigation();
 
@@ -283,6 +283,9 @@ const Compare = () => {
                             <Text style={styles.textFont}>{data2["camera"]["flash"]}</Text>
                         </View>
                     </View>
+                    <View style={{ marginTop: '3%', alignItems: "center", marginBottom: '3%' }}>
+                        <Text style={{ fontSize: 20, fontWeight: 500 }}>사진</Text>
+                    </View>
                     <View style={styles.row}>
                         <View style={styles.inlist}>
                             <Text style={styles.textFont}>{data1["camera"]["photo_resolution"]}</Text>
@@ -290,6 +293,9 @@ const Compare = () => {
                         <View style={{ width: '50%', alignItems: "center", }}>
                             <Text style={styles.textFont}>{data2["camera"]["photo_resolution"]}</Text>
                         </View>
+                    </View>
+                    <View style={{ marginTop: '3%', alignItems: "center", marginBottom: '3%' }}>
+                        <Text style={{ fontSize: 20, fontWeight: 500 }}>영상</Text>
                     </View>
                     <View style={styles.row}>
                         <View style={styles.inlist}>
@@ -307,6 +313,72 @@ const Compare = () => {
                             <Text style={styles.textFont}>{data2["camera"]["video_frame"]}</Text>
                         </View>
                     </View>
+                    <Text style={{ fontSize: 35, marginLeft: "5%", marginTop: '5%', fontWeight: 500 }}>전면카메라</Text>
+                    <View style={{ marginTop: '3%', alignItems: "center", marginBottom: '3%' }}>
+                        <Text style={{ fontSize: 20, fontWeight: 500 }}>사진</Text>
+                    </View>
+                    <View style={styles.row}>
+                        <View style={styles.inlist}>
+                            <Text style={styles.textFont}>{data1["front_camera"]["front_photo_resolution"]}</Text>
+                        </View>
+                        <View style={{ width: '50%', alignItems: "center", }}>
+                            <Text style={styles.textFont}>{data2["front_camera"]["front_photo_resolution"]}</Text>
+                        </View>
+                    </View>
+                    <View style={{ marginTop: '3%', alignItems: "center", marginBottom: '3%' }}>
+                        <Text style={{ fontSize: 20, fontWeight: 500 }}>영상</Text>
+                    </View>
+                    <View style={styles.row}>
+                        <View style={styles.inlist}>
+                            <Text style={styles.textFont}>{data1["front_camera"]["front_image_resolution"]}</Text>
+                        </View>
+                        <View style={{ width: '50%', alignItems: "center", }}>
+                            <Text style={styles.textFont}>{data2["front_camera"]["front_image_resolution"]}</Text>
+                        </View>
+                    </View>
+                    <View style={styles.row}>
+                        <View style={styles.inlist}>
+                            <Text style={styles.textFont}>{data1["front_camera"]["front_video_frame"]}</Text>
+                        </View>
+                        <View style={{ width: '50%', alignItems: "center", }}>
+                            <Text style={styles.textFont}>{data2["front_camera"]["front_video_frame"]}</Text>
+                        </View>
+                    </View>
+                    <Text style={{ fontSize: 35, marginLeft: "5%", marginTop: '5%', fontWeight: 500 }}>배터리</Text>
+                    <View style={styles.row}>
+                        <View style={styles.inlist}>
+                            <Text style={styles.textFont}>{data1["battery"]["battery"]}</Text>
+                        </View>
+                        <View style={{ width: '50%', alignItems: "center", }}>
+                            <Text style={styles.textFont}>{data2["battery"]["battery"]}</Text>
+                        </View>
+                    </View>
+                    <View style={styles.row}>
+                        <View style={styles.inlist}>
+                            <Text style={styles.textFont}>{data1["battery"]["type"]}</Text>
+                        </View>
+                        <View style={{ width: '50%', alignItems: "center", }}>
+                            <Text style={styles.textFont}>{data2["battery"]["type"]}</Text>
+                        </View>
+                    </View>
+                    <View style={styles.row}>
+                        <View style={styles.inlist}>
+                            <Text style={styles.textFont}>{data1["battery"]["wireless_charging"]}</Text>
+                        </View>
+                        <View style={{ width: '50%', alignItems: "center", }}>
+                            <Text style={styles.textFont}>{data2["battery"]["wireless_charging"]}</Text>
+                        </View>
+                    </View>
+                    <Text style={{ fontSize: 35, marginLeft: "5%", marginTop: '5%', fontWeight: 500 }}>생체인식</Text>
+                    <View style={styles.row}>
+                        <View style={styles.inlist}>
+                            <Text style={styles.textFont}>{data1["biometric_recognition"]}</Text>
+                        </View>
+                        <View style={{ width: '50%', alignItems: "center", }}>
+                            <Text style={styles.textFont}>{data2["biometric_recognition"]}</Text>
+                        </View>
+                    </View>
+                    <View style={{ height: 50 }} />
                 </View>
 
             </ScrollView>
@@ -344,5 +416,5 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Compare;
+export default DeviceCompare;
 

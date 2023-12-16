@@ -11,7 +11,6 @@ import { saveDataToStorage, loadDataFromStorage } from '../storage/AsyncStorageU
 const NotificationKeywordSettingScreen = () => {
     const navigation = useNavigation();
 
-
     const [text, setText] = useState('')
     const [searchHistory,setSearchHistory] = useState(['아이폰 15', '아이폰 15 맥스', "search"])
     const [searchGeo, setSearchGeo] = useState([
@@ -24,7 +23,7 @@ const NotificationKeywordSettingScreen = () => {
     },[])
 
 
-    // 알림 받을 동네 넘겨주기 
+    // 알림 받을 동네 넘겨주기 (아직 미완성)
     const geolocationPost = async () => {
         const data = {
             memberId:1,

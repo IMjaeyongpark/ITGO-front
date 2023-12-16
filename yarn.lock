@@ -1305,27 +1305,6 @@
     "xcode" "^3.0.1"
     "xml2js" "0.6.0"
 
-"@expo/config-plugins@~7.3.0":
-  "integrity" "sha512-TkDtAP3P/rrjhr7GBQtyYH/l1SQUGAO/gByBCwHjfRa4RIPFs+iiq7hocytAl+oSmVsB28ipZCC3O1IPg1OZ7g=="
-  "resolved" "https://registry.npmjs.org/@expo/config-plugins/-/config-plugins-7.3.1.tgz"
-  "version" "7.3.1"
-  dependencies:
-    "@expo/config-types" "^49.0.0-alpha.1"
-    "@expo/json-file" "~8.2.37"
-    "@expo/plist" "^0.0.20"
-    "@expo/sdk-runtime-versions" "^1.0.0"
-    "@react-native/normalize-color" "^2.0.0"
-    "chalk" "^4.1.2"
-    "debug" "^4.3.1"
-    "find-up" "~5.0.0"
-    "getenv" "^1.0.0"
-    "glob" "7.1.6"
-    "resolve-from" "^5.0.0"
-    "semver" "^7.5.3"
-    "slash" "^3.0.0"
-    "xcode" "^3.0.1"
-    "xml2js" "0.6.0"
-
 "@expo/config-types@^47.0.0":
   "integrity" "sha512-r0pWfuhkv7KIcXMUiNACJmJKKwlTBGMw9VZHNdppS8/0Nve8HZMTkNRFQzTHW1uH3pBj8jEXpyw/2vSWDHex9g=="
   "resolved" "https://registry.npmjs.org/@expo/config-types/-/config-types-47.0.0.tgz"
@@ -1360,23 +1339,6 @@
   dependencies:
     "@babel/code-frame" "~7.10.4"
     "@expo/config-plugins" "~7.2.0"
-    "@expo/config-types" "^49.0.0-alpha.1"
-    "@expo/json-file" "^8.2.37"
-    "getenv" "^1.0.0"
-    "glob" "7.1.6"
-    "require-from-string" "^2.0.2"
-    "resolve-from" "^5.0.0"
-    "semver" "7.5.3"
-    "slugify" "^1.3.4"
-    "sucrase" "^3.20.0"
-
-"@expo/config@~8.2.0":
-  "integrity" "sha512-15XjV0WrSb5hChRM5pAEK5uyh55njfgFOEZpov3YKYBeMd9D6QT/azWWqnaFuuCWKzgzyxD9HaYgGo5VbnOU1g=="
-  "resolved" "https://registry.npmjs.org/@expo/config/-/config-8.2.1.tgz"
-  "version" "8.2.1"
-  dependencies:
-    "@babel/code-frame" "~7.10.4"
-    "@expo/config-plugins" "~7.3.0"
     "@expo/config-types" "^49.0.0-alpha.1"
     "@expo/json-file" "^8.2.37"
     "getenv" "^1.0.0"
@@ -4094,14 +4056,6 @@
     "@expo/config" "~7.0.2"
     "uuid" "^3.3.2"
 
-"expo-constants@~14.5.0":
-  "integrity" "sha512-06OKXQmKI0vuje++6lm7w1kO3rKsZAHio/4d9hwQuVAtExJ6RM92BnpzkDAV16ZheVN/FHKzNyY1BYLqXfujMw=="
-  "resolved" "https://registry.npmjs.org/expo-constants/-/expo-constants-14.5.1.tgz"
-  "version" "14.5.1"
-  dependencies:
-    "@expo/config" "~8.2.0"
-    "uuid" "^3.3.2"
-
 "expo-file-system@~15.4.0", "expo-file-system@~15.4.4":
   "integrity" "sha512-F0xS88D85F7qVQ61r0qBnzh6VW/s6iIl+VaQEEi2nAIOQHw1JIEj4yCXPLTtbyn5VmArbe2dSL3KYz1V+BLkKA=="
   "resolved" "https://registry.npmjs.org/expo-file-system/-/expo-file-system-15.4.4.tgz"
@@ -4142,13 +4096,13 @@
   "resolved" "https://registry.npmjs.org/expo-keep-awake/-/expo-keep-awake-12.3.0.tgz"
   "version" "12.3.0"
 
-"expo-linking@*":
-  "integrity" "sha512-BVj+9yfMfQg1r23uQOES3Y47XdigKV0Qg0jJ5zP+3SO/mZ98s3r5wASOGLhujvO9/SqOh/BdotcTsO9sasxCag=="
-  "resolved" "https://registry.npmjs.org/expo-linking/-/expo-linking-6.0.0.tgz"
-  "version" "6.0.0"
+"expo-linking@*", "expo-linking@~5.0.2":
+  "integrity" "sha512-SPQus0+tYGx9c69Uw4wmdo3rkKX8vRT1vyJz/mvkpSlZN986s0NmP/V0M5vDv5Zv2qZzVdqJyuITFe0Pg5aI+A=="
+  "resolved" "https://registry.npmjs.org/expo-linking/-/expo-linking-5.0.2.tgz"
+  "version" "5.0.2"
   dependencies:
     "@types/qs" "^6.9.7"
-    "expo-constants" "~14.5.0"
+    "expo-constants" "~14.4.2"
     "invariant" "^2.2.4"
     "qs" "^6.11.0"
     "url-parse" "^1.5.9"
@@ -6523,7 +6477,7 @@
     "kleur" "^3.0.3"
     "sisteransi" "^1.0.5"
 
-"prop-types@*", "prop-types@^15.7.2":
+"prop-types@*", "prop-types@^15.6.2", "prop-types@^15.7.2":
   "integrity" "sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   "version" "15.8.1"
@@ -6763,6 +6717,13 @@
   dependencies:
     "react-freeze" "^1.0.0"
     "warn-once" "^0.1.0"
+
+"react-native-web-swiper@^2.2.4":
+  "integrity" "sha512-Lq6fgCuVhEzxgWJU5t+wWhCoOfd0jfQ1Qdwyww/Kln4McPXFKQ6MaSuUHltnFOKYHej97R7avPchn+QB1wIFQg=="
+  "resolved" "https://registry.npmjs.org/react-native-web-swiper/-/react-native-web-swiper-2.2.4.tgz"
+  "version" "2.2.4"
+  dependencies:
+    "prop-types" "^15.6.2"
 
 "react-native-webview@*":
   "integrity" "sha512-QzhQ5JCU+Nf2W285DtvCZOVQy/MkJXMwNDYPZvOWQbAOgxJMSSO+BtqXTMA1UPugDsko6PxJ0TxSlUwIwJijDg=="

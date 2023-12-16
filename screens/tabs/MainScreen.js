@@ -10,7 +10,7 @@ const MainScreen = ({ nav }) => {
     page: 0,
     size: 100,
     sortBy: 'RECENT_POST',
-  }
+      }
   const path = '/post/find/all/list'
 
   return (
@@ -22,10 +22,8 @@ const MainScreen = ({ nav }) => {
           어떤 전자기기와 이어드릴까요?
         </Text>
         <Image style={styles.img} source={require('../../assets/interface.png')}/>
-      
-      </View>
-      <Text style={styles.text}>최근 본 상품</Text>
-      <List nav={nav} par = {par} path={path}/>
+            </View>
+            <List nav={nav} par = {par} path={path}/>
     </View>
   );
 };

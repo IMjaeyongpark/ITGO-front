@@ -19,7 +19,8 @@ const PhoneNumber = () => {
   const sendVerification=()=>{
     const phoneProvider = new firebase.auth.PhoneAuthProvider();
     const formattedPhoneNumber = "+82" + phoneNumber; // "+82"를 전화번호에 추가합니다.
-  
+    console.log('sssssss',phoneNumber);
+    saveDataToStorage('member_id',phoneNumber);
     phoneProvider
         .verifyPhoneNumber(formattedPhoneNumber,recaptchaVerifier.current)
         .then((id)=>{
@@ -45,7 +46,7 @@ const PhoneNumber = () => {
       '회원가입 성공!'
     )
     //asyncstorage에 member_id 저장
-    saveDataToStorage('member_id',phoneNumber);
+    
     navigation.navigate('Geolocation')
 
   }
