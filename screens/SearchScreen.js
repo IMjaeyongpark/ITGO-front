@@ -52,7 +52,7 @@ const SearchScreen = () => {
 
     const delAllSearchHistory = () => {
         setSearchHistory([])
-        saveDataToStorage('searchHistory',[])
+        saveDataToStorage('searchHistory', [])
 
     }
 
@@ -64,6 +64,22 @@ const SearchScreen = () => {
 
         navigation.push('SearchResultScreen', { text })
     }
+
+    const onPressSearchHistory = (v, index) => {
+        const tmp1 = searchHistory.filter((value, idx) => {
+            if (idx != index) {
+                return value;
+            }
+        })
+        
+        const tmp = [v, ...tmp1]
+        setText(v)
+        saveDataToStorage('searchHistory', tmp)
+        setSearchHistory(tmp)
+        navigation.push('SearchResultScreen', { text })
+    }
+
+
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -78,7 +94,6 @@ const SearchScreen = () => {
                     ></TextInput>
                     <TouchableOpacity style={{ justifyContent: "center", alignItems: "center" }} onPress={() => {
                         addSearchHistory()
-                        navigation.navigate('SearchResultScreen', { text })
                     }}>
                         <Feather name="search" size={30} color="black" style={{ opacity: 0.4 }} />
                     </TouchableOpacity>
@@ -98,17 +113,19 @@ const SearchScreen = () => {
 
             <View style={{ flex: 1 }}>
                 {searchHistory.map((x, index) => (
-                    <View style={{ flexDirection: 'row', marginLeft: "8%", marginTop: "4%", alignItems: "center" }}>
-                        <View style={{ flexDirection: 'row', borderColor: '#C9C3C3', borderWidth: 1, borderRadius: 20, padding: 7, alignItems: "center" }}>
-                            <View style={{ alignItems: 'center', }}>
-                                <Text style={{ fontSize: 19, fontWeight: '300' }}>   {x} </Text>
+                    <TouchableOpacity onPress={() => onPressSearchHistory(x, index)}>
+                        <View style={{ flexDirection: 'row', marginLeft: "8%", marginTop: "4%", alignItems: "center" }}>
+                            <View style={{ flexDirection: 'row', borderColor: '#C9C3C3', borderWidth: 1, borderRadius: 20, padding: 7, alignItems: "center" }}>
+                                <View style={{ alignItems: 'center', }}>
+                                    <Text style={{ fontSize: 19, fontWeight: '300' }}>   {x} </Text>
+                                </View>
+                                <TouchableOpacity style={{ marginLeft: 5, }} onPress={() => deleteSearchHistory(index)}>
+                                    <AntDesign name="close" size={19} color="#C9C3C3" />
+                                </TouchableOpacity>
+                                <Text>  </Text>
                             </View>
-                            <TouchableOpacity style={{ marginLeft: 5, }} onPress={() => deleteSearchHistory(index)}>
-                                <AntDesign name="close" size={19} color="#C9C3C3" />
-                            </TouchableOpacity>
-                            <Text>  </Text>
                         </View>
-                    </View>
+                    </TouchableOpacity>
                 ))}
             </View>
         </SafeAreaView>

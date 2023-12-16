@@ -9,7 +9,7 @@ const BookmarkScreen = ({ nav }) => {
   const path = '/post/find/like/list'
 
   const par = {
-    memberId: 90,
+    memberId: 1,
     page: 0,
     size: 10,
     sortBy: 'RECENT_POST',

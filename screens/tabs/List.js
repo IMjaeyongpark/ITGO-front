@@ -11,7 +11,6 @@ const List = (props) => {
     const url = process.env.API_IP + props.path
     console.log(url)
 
-
     const params = props.par
 
 
@@ -28,14 +27,20 @@ const List = (props) => {
                     var tmp = v.imgFolderAddress
                     tmp = tmp.replace('[', '')
                     tmp = tmp.replace(']', '')
+                    tmp = tmp.replace(/ /g, '')
                     tmp = tmp.replace(/\'/g, '')
                     tmp = tmp.split(',')
+
+                    if (v.memberName == 'joongna') {
+                        v.memberName = "중고나라"
+
+                    }
                     return {
                         "Image": tmp,
                         "title": v.title,
-                        "time": "배방읍 1시간 전",
+                        "time": v.location.street + " 1시간 전",
                         "price": v.price,
-                        "where": "당근",
+                        "where": v.memberName,
                         "like": v.isLike,
                         "postId": v.postId,
                         "nav": nav
@@ -61,13 +66,16 @@ const List = (props) => {
 
 
     return (
+
         <ScrollView>
+            {props.add}
+            <View>
             {data.map((x, index) => (
-                <TouchableOpacity key={index} onPress={() => nav.navigate('ItemDetailScreen', { x })}>
+                <TouchableOpacity key={index} onPress={() => nav.navigate('ItemDetailScreen', { x })} style={{backgroundColor:"white"}}>
                     <View style={styles.listStyle}>
                         <View style={{ felx: 1, flexDirection: 'row', width: '100%', height: '100%' }} >
                             <View style={{ width: '35%', height: '100%', justifyContent: "center", alignItems: "center" }}>
-                                <Image source={{uri:x['Image'][0]}} style={{ width: "80%", height: "80%", borderRadius: "10%" }} />
+                                <Image source={{ uri: x['Image'][0] }} style={{ width: "80%", height: "80%", borderRadius: "10%" }} />
                                 {/* <TouchableOpacity onPress={() => toggleBookmark(index)} style={{ marginTop: "" }}>
                                     <Image source={x.bookmark ? Yes : No} style={{ width: 30, height: 30, marginBottom: 10, marginLeft: 40 }} />
                                 </TouchableOpacity> */}
@@ -79,7 +87,7 @@ const List = (props) => {
                                     <View style={{ width: '45%' }}>
                                         <Text style={{ fontSize: 20, marginBottom: 10 }}>{x["price"].toLocaleString('ko-KR')}원</Text>
                                     </View>
-                                    <View style={{ width: '20%' }}>
+                                    <View style={{}}>
                                         <Text style={{ fontSize: 20, marginBottom: 10, marginLeft: "10%" }}>{x["where"]}</Text>
                                     </View>
 
@@ -89,6 +97,7 @@ const List = (props) => {
                     </View>
                 </TouchableOpacity>
             ))}
+            </View>
         </ScrollView>
     );
 
@@ -103,7 +112,8 @@ const styles = StyleSheet.create({
         height: 150,
         borderColor: '#C9C3C3',
         borderBottomWidth: 0.5,
-    },
+        
+    }
 });
 
 export default List;

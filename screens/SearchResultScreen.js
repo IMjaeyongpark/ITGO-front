@@ -46,8 +46,6 @@ const SearchResultScreen = ({ route }) => {
         saveDataToStorage('searchHistory', tmp)
         setSearchHistory(tmp)
         console.log(searchHistory)
-
-        navigation.push('SearchResultScreen', { text })
     }
 
     const par = {
