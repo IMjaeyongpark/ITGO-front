@@ -7,6 +7,7 @@ import axios from 'axios';
 import Swiper from 'react-native-swiper';
 import * as Linking from 'expo-linking';
 
+
 // MainScreen 컴포넌트
 const ItemDetailScreen = ({ route }) => {
 

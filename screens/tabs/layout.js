@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Button } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MainScreen from './MainScreen'
 import NearmeScreen from './NearmeScreen'
-import PopularityRankingScreen from './PopularityRankingScreen'
+import CategoryScreen from './CategoryScreen'
 import BookmarkScreen from './BookmarkScreen'
 import MyScreen from './MyScreen'
 import { Feather, Ionicons, AntDesign } from '@expo/vector-icons';
@@ -22,7 +22,7 @@ export default function TabLayout({ nav }) {
       }}
     >
       <Tab.Screen
-        name='인기순위'
+        name='카테고리'
         options={{
           tabBarIcon: ({ color, size }) => (
             <Feather name="menu" size={size} color={color} />
@@ -30,7 +30,7 @@ export default function TabLayout({ nav }) {
           tabBarLabel: () => null,
         }}
       >
-        {() => <PopularityRankingScreen nav={nav} />}
+        {() => <CategoryScreen nav={nav} />}
       </Tab.Screen>
 
       <Tab.Screen
