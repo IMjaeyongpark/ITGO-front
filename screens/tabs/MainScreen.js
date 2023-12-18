@@ -13,24 +13,19 @@ const MainScreen = ({ nav }) => {
       }
   const path = '/post/find/all/list'
 
-  const add = (<View style={styles.topbox}>
-    <Text style={styles.toptext}>
-      어떤 전자기기와 이어드릴까요?
-    </Text>
-    <Image style={styles.img} source={require('../../assets/interface.png')} />
-  </View>)
+  const add = (
+    <View style={styles.topbox}>
+      <Text style={styles.toptext}>
+        어떤 전자기기와 이어드릴까요?
+      </Text>
+      <Image style={styles.img} source={require('../../assets/interface.png')} />
+    </View>)
 
   return (
     <View style={styles.container}>
       <TopNav nav={nav}></TopNav>
       {/* top  광고 인터페이스*/}
-      <View style={styles.topbox}>
-        <Text style={styles.toptext}>
-          어떤 전자기기와 이어드릴까요?
-        </Text>
-        <Image style={styles.img} source={require('../../assets/interface.png')}/>
-            </View>
-            <List nav={nav} par = {par} path={path}/>
+      <List nav={nav} par={par} path={path} add={add} />
     </View>
   );
 };

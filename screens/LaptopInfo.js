@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import TMP from '../assets/tmp3.png';
 
 // MainScreen 컴포넌트
-const Compare = () => {
+const LaptopInfo = () => {
 
     const navigation = useNavigation();
 
@@ -66,53 +66,6 @@ const Compare = () => {
         "image": "https://img.danawa.com/prod_img/500000/140/936/img/18936140_1.jpg?shrink=500:500"
     }
 
-    const data2 = {
-        "modelname": "APPLE 2022 맥북에어13 M2 8Core 8GPU 블루 ",
-        "kind": "노트북 ",
-        "OS": " macOS Monterey ",
-        "screen": {
-            "LCD": "34.5cm(13.6인치) ",
-            "Resolution": " 2560x1664 ",
-            "brightness": " 500nit "
-        },
-        "CPU": {
-            "name": "애플(ARM) ",
-            "cpu": " 실리콘 M2 ",
-            "core": " 옥타코어(4+4) "
-        },
-        "ram": {
-            "capacity": "8GB ",
-            "replace": "불가능 "
-        },
-        "graphic": {
-            "graphic": "내장",
-            "name": " M2 8 core "
-        },
-        "storage": {
-            "name": "SSD ",
-            "size": " 256GB "
-        },
-        "network": " 802.11ax(Wi-Fi 6) ",
-        "imageIO": {
-            "cam": "웹캠(FHD) "
-        },
-        "input": {
-            "key": "키보드 라이트 ",
-            "rudder": " ㅗ형 방향키 "
-        },
-        "power": {
-            "battery": " 52.6Wh ",
-            "adapters": " 30W ",
-            "type": " MagSafe 3 ",
-            "length": " 최대18시간 "
-        },
-        "basic": {
-            "thickness": " 11.3mm ",
-            "weight": " 1.24kg ",
-            "color": " 미드나이트 "
-        },
-        "image": "https://img.danawa.com/prod_img/500000/826/203/img/17203826_1.jpg?shrink=500:500"
-    }
 
 
 
@@ -125,239 +78,224 @@ const Compare = () => {
                 <TouchableOpacity style={{ marginLeft: '5%', marginTop: '10%' }} onPress={backStack}>
                     <AntDesign name="left" size={35} color="white" />
                 </TouchableOpacity>
-               
+                
             </View>
 
             <ScrollView style={{ flex: 1 }}>
                 <View style={{ flex: 1, }}>
                     <View style={styles.row}>
-                        <View style={styles.inlist}>
-                            <Text style={{ fontSize: 20, marginTop: 20, fontWeight: "500" }}>{data1["modelname"]}</Text>
-                        </View>
-                        <View style={{ width: '50%', alignItems: "center", }}>
-                            <Text style={{ fontSize: 20, marginTop: 20, fontWeight: "500" }}>{data2["modelname"]}</Text>
+                        <View style={{
+                            width: '90%',
+                            alignItems: "center",
+                        }}>
+                            <Text style={{ fontSize: 25, marginTop: 20, fontWeight: "500" }}>{data1["modelname"]}</Text>
                         </View>
                     </View>
                     <View style={styles.row}>
                         <View style={styles.inlist}>
                             <Image source={{ uri: data1['image'] }} style={{ width: '80%', aspectRatio: 1, borderRadius: "10%", marginTop: 20 }} />
                         </View>
-                        <View style={{ width: '50%', alignItems: "center", }}>
-                            <Image source={{ uri: data2['image'] }} style={{ width: '80%', aspectRatio: 1, borderRadius: "10%", marginTop: 20 }} />
-                        </View>
                     </View>
                     <Text style={{ fontSize: 35, marginLeft: "5%", marginTop: '5%', fontWeight: 500 }}>기본스펙</Text>
                     <View style={styles.row}>
+                        <View style={styles.info}>
+                            <Text style={styles.textFont}>제품 분류</Text>
+                        </View>
                         <View style={styles.inlist}>
                             <Text style={styles.textFont}>{data1["kind"]}</Text>
                         </View>
-                        <View style={{ width: '50%', alignItems: "center", }}>
-                            <Text style={styles.textFont}>{data2["kind"]}</Text>
-                        </View>
                     </View>
                     <View style={styles.row}>
+                        <View style={styles.info}>
+                            <Text style={styles.textFont}>OS</Text>
+                        </View>
                         <View style={styles.inlist}>
                             <Text style={styles.textFont}>{data1["OS"]}</Text>
                         </View>
-                        <View style={{ width: '50%', alignItems: "center", }}>
-                            <Text style={styles.textFont}>{data2["OS"]}</Text>
-                        </View>
                     </View>
                     <View style={styles.row}>
+                        <View style={styles.info}>
+                            <Text style={styles.textFont}>두께</Text>
+                        </View>
                         <View style={styles.inlist}>
-                            <Text style={styles.textFont}>{data1["basic"]["thickness"]}(두께)</Text>
-                        </View>
-                        <View style={{ width: '50%', alignItems: "center", }}>
-                            <Text style={styles.textFont}>{data2["basic"]["thickness"]}(두께)</Text>
+                            <Text style={styles.textFont}>{data1["basic"]["thickness"]}</Text>
                         </View>
                     </View>
                     <View style={styles.row}>
+                        <View style={styles.info}>
+                            <Text style={styles.textFont}>무게</Text>
+                        </View>
                         <View style={styles.inlist}>
                             <Text style={styles.textFont}>{data1["basic"]["weight"]}</Text>
                         </View>
-                        <View style={{ width: '50%', alignItems: "center", }}>
-                            <Text style={styles.textFont}>{data2["basic"]["weight"]}</Text>
-                        </View>
                     </View>
                     <View style={styles.row}>
+                        <View style={styles.info}>
+                            <Text style={styles.textFont}>색상</Text>
+                        </View>
                         <View style={styles.inlist}>
                             <Text style={styles.textFont}>{data1["basic"]["color"]}</Text>
-                        </View>
-                        <View style={{ width: '50%', alignItems: "center", }}>
-                            <Text style={styles.textFont}>{data2["basic"]["color"]}</Text>
                         </View>
                     </View>
                     <Text style={{ fontSize: 35, marginLeft: "5%", marginTop: '5%', fontWeight: 500 }}>화면</Text>
                     <View style={styles.row}>
+                        <View style={styles.info}>
+                            <Text style={styles.textFont}>화면 크기</Text>
+                        </View>
                         <View style={styles.inlist}>
                             <Text style={styles.textFont}>{data1["screen"]["LCD"]}</Text>
                         </View>
-                        <View style={{ width: '50%', alignItems: "center", }}>
-                            <Text style={styles.textFont}>{data2["screen"]["LCD"]}</Text>
-                        </View>
                     </View>
                     <View style={styles.row}>
+                        <View style={styles.info}>
+                            <Text style={styles.textFont}>해상도</Text>
+                        </View>
                         <View style={styles.inlist}>
                             <Text style={styles.textFont}>{data1["screen"]["Resolution"]}</Text>
                         </View>
-                        <View style={{ width: '50%', alignItems: "center", }}>
-                            <Text style={styles.textFont}>{data2["screen"]["Resolution"]}</Text>
-                        </View>
                     </View>
                     <View style={styles.row}>
+                        <View style={styles.info}>
+                            <Text style={styles.textFont}>화면 밝기</Text>
+                        </View>
                         <View style={styles.inlist}>
                             <Text style={styles.textFont}>{data1["screen"]["brightness"]}</Text>
                         </View>
-                        <View style={{ width: '50%', alignItems: "center", }}>
-                            <Text style={styles.textFont}>{data2["screen"]["brightness"]}</Text>
-                        </View>
                     </View>
                     <View style={styles.row}>
+                        <View style={styles.info}>
+                            <Text style={styles.textFont}>주사율</Text>
+                        </View>
                         <View style={styles.inlist}>
                             <Text style={styles.textFont}>{data1["screen"]["scanning_rate"]}</Text>
-                        </View>
-                        <View style={{ width: '50%', alignItems: "center", }}>
-                            <Text style={styles.textFont}>{data2["screen"]["scanning_rate"]}</Text>
                         </View>
                     </View>
                 </View>
                 <Text style={{ fontSize: 35, marginLeft: "5%", marginTop: '5%', fontWeight: 500 }}>CPU</Text>
                 <View style={styles.row}>
+                    <View style={styles.info}>
+                        <Text style={styles.textFont}>CPU 제조사</Text>
+                    </View>
                     <View style={styles.inlist}>
                         <Text style={styles.textFont}>{data1["CPU"]["name"]}</Text>
                     </View>
-                    <View style={{ width: '50%', alignItems: "center", }}>
-                        <Text style={styles.textFont}>{data2["CPU"]["name"]}</Text>
-                    </View>
                 </View>
                 <View style={styles.row}>
+                    <View style={styles.info}>
+                        <Text style={styles.textFont}>CPU 종류</Text>
+                    </View>
                     <View style={styles.inlist}>
                         <Text style={styles.textFont}>{data1["CPU"]["cpu"]}</Text>
                     </View>
-                    <View style={{ width: '50%', alignItems: "center", }}>
-                        <Text style={styles.textFont}>{data2["CPU"]["cpu"]}</Text>
-                    </View>
                 </View>
                 <View style={styles.row}>
+                    <View style={styles.info}>
+                        <Text style={styles.textFont}>코어 수</Text>
+                    </View>
                     <View style={styles.inlist}>
                         <Text style={styles.textFont}>{data1["CPU"]["core"]}</Text>
-                    </View>
-                    <View style={{ width: '50%', alignItems: "center", }}>
-                        <Text style={styles.textFont}>{data2["CPU"]["core"]}</Text>
                     </View>
                 </View>
                 <Text style={{ fontSize: 35, marginLeft: "5%", marginTop: '5%', fontWeight: 500 }}>램</Text>
                 <View style={styles.row}>
+                    <View style={styles.info}>
+                        <Text style={styles.textFont}>램 용량</Text>
+                    </View>
                     <View style={styles.inlist}>
                         <Text style={styles.textFont}>{data1["ram"]["capacity"]}</Text>
                     </View>
-                    <View style={{ width: '50%', alignItems: "center", }}>
-                        <Text style={styles.textFont}>{data2["ram"]["capacity"]}</Text>
-                    </View>
                 </View>
                 <View style={styles.row}>
+                    <View style={styles.info}>
+                        <Text style={styles.textFont}>램 교체</Text>
+                    </View>
                     <View style={styles.inlist}>
                         <Text style={styles.textFont}>{data1["ram"]["replace"]}</Text>
-                    </View>
-                    <View style={{ width: '50%', alignItems: "center", }}>
-                        <Text style={styles.textFont}>{data2["ram"]["replace"]}</Text>
                     </View>
                 </View>
                 <Text style={{ fontSize: 35, marginLeft: "5%", marginTop: '5%', fontWeight: 500 }}>그래픽</Text>
                 <View style={styles.row}>
+                    <View style={styles.info}>
+                        <Text style={styles.textFont}>GPU 종류</Text>
+                    </View>
                     <View style={styles.inlist}>
                         <Text style={styles.textFont}>{data1["graphic"]["graphic"]}</Text>
                     </View>
-                    <View style={{ width: '50%', alignItems: "center", }}>
-                        <Text style={styles.textFont}>{data2["graphic"]["graphic"]}</Text>
-                    </View>
                 </View>
                 <View style={styles.row}>
+                    <View style={styles.info}>
+                        <Text style={styles.textFont}>GPU 칩셋</Text>
+                    </View>
                     <View style={styles.inlist}>
                         <Text style={styles.textFont}>{data1["graphic"]["name"]}</Text>
-                    </View>
-                    <View style={{ width: '50%', alignItems: "center", }}>
-                        <Text style={styles.textFont}>{data2["graphic"]["name"]}</Text>
                     </View>
                 </View>
                 <Text style={{ fontSize: 35, marginLeft: "5%", marginTop: '5%', fontWeight: 500 }}>네트워크</Text>
                 <View style={styles.row}>
+                    <View style={styles.info}>
+                        <Text style={styles.textFont}>무선랜</Text>
+                    </View>
                     <View style={styles.inlist}>
                         <Text style={styles.textFont}>{data1["network"]}</Text>
-                    </View>
-                    <View style={{ width: '50%', alignItems: "center", }}>
-                        <Text style={styles.textFont}>{data2["network"]}</Text>
                     </View>
                 </View>
                 <Text style={{ fontSize: 35, marginLeft: "5%", marginTop: '5%', fontWeight: 500 }}>영상입출력</Text>
                 <View style={styles.row}>
+
                     <View style={styles.inlist}>
                         <Text style={styles.textFont}>{data1["imageIO"]["cable"]}</Text>
-                    </View>
-                    <View style={{ width: '50%', alignItems: "center", }}>
-                        <Text style={styles.textFont}>{data2["imageIO"]["cable"]}</Text>
                     </View>
                 </View>
                 <View style={styles.row}>
                     <View style={styles.inlist}>
                         <Text style={styles.textFont}>{data1["imageIO"]["cam"]}</Text>
                     </View>
-                    <View style={{ width: '50%', alignItems: "center", }}>
-                        <Text style={styles.textFont}>{data2["imageIO"]["cam"]}</Text>
-                    </View>
                 </View>
                 <Text style={{ fontSize: 35, marginLeft: "5%", marginTop: '5%', fontWeight: 500 }}>입력창지</Text>
                 <View style={styles.row}>
+
                     <View style={styles.inlist}>
                         <Text style={styles.textFont}>{data1["input"]["key"]}</Text>
-                    </View>
-                    <View style={{ width: '50%', alignItems: "center", }}>
-                        <Text style={styles.textFont}>{data2["input"]["key"]}</Text>
                     </View>
                 </View>
                 <View style={styles.row}>
                     <View style={styles.inlist}>
                         <Text style={styles.textFont}>{data1["input"]["rudder"]}</Text>
                     </View>
-                    <View style={{ width: '50%', alignItems: "center", }}>
-                        <Text style={styles.textFont}>{data2["input"]["rudder"]}</Text>
-                    </View>
                 </View>
                 <Text style={{ fontSize: 35, marginLeft: "5%", marginTop: '5%', fontWeight: 500 }}>파워</Text>
                 <View style={styles.row}>
+                    <View style={styles.info}>
+                        <Text style={styles.textFont}>배터리</Text>
+                    </View>
                     <View style={styles.inlist}>
                         <Text style={styles.textFont}>{data1["power"]["battery"]}</Text>
                     </View>
-                    <View style={{ width: '50%', alignItems: "center", }}>
-                        <Text style={styles.textFont}>{data2["power"]["battery"]}</Text>
-                    </View>
                 </View>
                 <View style={styles.row}>
+                    <View style={styles.info}>
+                        <Text style={styles.textFont}>어댑터</Text>
+                    </View>
                     <View style={styles.inlist}>
                         <Text style={styles.textFont}>{data1["power"]["adapters"]}</Text>
                     </View>
-                    <View style={{ width: '50%', alignItems: "center", }}>
-                        <Text style={styles.textFont}>{data2["power"]["adapters"]}</Text>
-                    </View>
                 </View>
                 <View style={styles.row}>
+                    <View style={styles.info}>
+                        <Text style={styles.textFont}>충전단자</Text>
+                    </View>
                     <View style={styles.inlist}>
                         <Text style={styles.textFont}>{data1["power"]["type"]}</Text>
                     </View>
-                    <View style={{ width: '50%', alignItems: "center", }}>
-                        <Text style={styles.textFont}>{data2["power"]["type"]}</Text>
-                    </View>
                 </View>
                 <View style={styles.row}>
+                    <View style={styles.info}>
+                        <Text style={styles.textFont}>사용시간</Text>
+                    </View>
                     <View style={styles.inlist}>
                         <Text style={styles.textFont}>{data1["power"]["length"]}</Text>
                     </View>
-                    <View style={{ width: '50%', alignItems: "center", }}>
-                        <Text style={styles.textFont}>{data2["power"]["length"]}</Text>
-                    </View>
                 </View>
-
-
 
 
                 <View style={{ height: 50 }} />
@@ -386,15 +324,22 @@ const styles = StyleSheet.create({
     inlist: {
         width: '50%',
         alignItems: "center",
-        borderRightColor: '#C9C3C3',
-        borderRightWidth: 0.8
+        justifyContent: "center"
     },
     textFont: {
         fontSize: 17,
         marginTop: 20,
-        fontWeight: "500"
+        fontWeight: "500",
+        alignItems: "center"
+    },
+    info: {
+        width: '50%',
+        alignItems: "center",
+        borderRightColor: '#C9C3C3',
+        borderRightWidth: 0.8,
+        justifyContent: "center"
     }
 });
 
-export default Compare;
+export default LaptopInfo;
 

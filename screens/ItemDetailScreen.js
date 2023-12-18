@@ -7,6 +7,7 @@ import axios from 'axios';
 import Swiper from 'react-native-swiper';
 import * as Linking from 'expo-linking';
 
+
 // MainScreen 컴포넌트
 const ItemDetailScreen = ({ route }) => {
 
@@ -29,7 +30,7 @@ const ItemDetailScreen = ({ route }) => {
   };
 
   const regist = () => {
-    const likeurl = `${process.env.API_IPS}/like/regist/post`;
+    const likeurl = `${process.env.API_IP}/like/regist/post`;
     console.log(likeurl)
     fetch(`${likeurl}?memberId=${params.memberId}&postId=${params.postId}`)
       .then(response => {
@@ -42,6 +43,7 @@ const ItemDetailScreen = ({ route }) => {
       .catch(error => console.error('API 호출 중 에러:', error));
     setIsLike(!isLike)
   };
+
 
   const deletePost = async () => {
     const url = `${process.env.API_IP}/like/delete/post`;
@@ -76,7 +78,7 @@ const ItemDetailScreen = ({ route }) => {
   )
 
   useEffect(() => {
-    const url = process.env.API_IPS + '/post/view'
+    const url = process.env.API_IP + '/post/view'
     console.log(url)
     const fetchData = async () => {
       try {

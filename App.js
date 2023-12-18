@@ -11,10 +11,12 @@ import ItemDetailScreen from './screens/ItemDetailScreen';
 import Profile from './screens/Profile';
 import SearchScreen from './screens/SearchScreen';
 import SearchResultScreen from './screens/SearchResultScreen';
-import LabtopCompare from './screens/LabtopCompare';
+import LaptopInfo from './screens/LaptopInfo';
 import NotificationScreen from './screens/NotificationScreen';
 import ReGeolocationScreen from './screens/ReGeolocationScreen';
 import NotificationKeywordSettingScreen from './screens/NotificationKeywordSettingScreen';
+import CategoryResult from './screens/CategoryResult'
+import DeviceInfo from './screens/DeviceInfo';
 
 const Stack = createStackNavigator();
 
@@ -35,9 +37,11 @@ const App = () => {
         <Stack.Screen name="ItemDetailScreen" component={ItemDetailScreen} />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="SearchScreen" component={SearchScreen} />
-        <Stack.Screen name="LabtopCompare" component={LabtopCompare} />
+        <Stack.Screen name="LaptopInfo" component={LaptopInfo} />
         <Stack.Screen name="SearchResultScreen" component={SearchResultScreen} />
         <Stack.Screen name="NotificationScreen" component={NotificationScreen} />
+        <Stack.Screen name="CategoryResult" component={CategoryResult} />
+        <Stack.Screen name="DeviceInfo" component={DeviceInfo} />
         
       </Stack.Navigator>
     </NavigationContainer>

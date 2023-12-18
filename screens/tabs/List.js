@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Button, ScrollView, Image, TouchableOpacity } from 'react-native';
-import No from '../../assets/no.png';
-import Yes from '../../assets/yes.png';
 import axios from 'axios';
 
 const List = (props) => {

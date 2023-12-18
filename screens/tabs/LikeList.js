@@ -12,6 +12,7 @@ const LikeList = (props) => {
 
     const params = props.par
     
+    
 
     console.log(params)
 
