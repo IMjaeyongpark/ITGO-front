@@ -20,7 +20,7 @@ const PhoneNumber = () => {
     const phoneProvider = new firebase.auth.PhoneAuthProvider();
     const formattedPhoneNumber = "+82" + phoneNumber; // "+82"를 전화번호에 추가합니다.
     console.log('sssssss',phoneNumber);
-    saveDataToStorage('member_id',phoneNumber);
+    saveDataToStorage('phone',phoneNumber);
     phoneProvider
         .verifyPhoneNumber(formattedPhoneNumber,recaptchaVerifier.current)
         .then((id)=>{
@@ -52,7 +52,7 @@ const PhoneNumber = () => {
   }
   //인증번호가 오지 않을때 버튼
   const verificationErrorfunction=()=>{
-  
+
   }
   return (
     //빈공간 클릭시 키보드 내려가는 동작위함

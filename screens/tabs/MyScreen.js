@@ -1,17 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
 import Locate from '../../assets/locate.png'
 import BasicProfile from '../../assets/basicProfile.jpg';
 import TopNav from './TopNav'
 import { saveDataToStorage, loadDataFromStorage } from '../../storage/AsyncStorageUtil';
-
+import axios from 'axios';
 
 // MainScreen 컴포넌트
 const MyScreen = ({ nav }) => {
-
   profile = BasicProfile
-
+  const [nickName,setNickName] = useState("닉네임");
   const [onOff, setOnOff] = useState(true)
+  useEffect(() => {
+    const getUserInfo = async()=>{
+      try {
+        const data = await loadDataFromStorage('phone');
+        console.log("process.env.API_IP",process.env.API_IP)
+        console.log("data",data)
+        const response = await axios.post(`${process.env.API_IP}/profile?phoneNum=${data}`);
+        console.log("response.data",response.data);
+        setNickName(response.data.name)
+    } catch (error) {
+        console.error('데이터를 가져오는 중 오류 발생:', error);
+    }
+  }
+  getUserInfo()
+  },[])
+
+
   // 알림설정 onoff 설정
   const clickButton = () => {
     setOnOff(!onOff)
@@ -39,7 +55,7 @@ const MyScreen = ({ nav }) => {
         }}>
           <Image source={profile}
             style={{ width: 50, height: 50, borderRadius: 100, margin: 30 }}></Image>
-          <Text style={{ fontSize: 20 }}>닉네임</Text>
+          <Text style={{ fontSize: 20 }}>{nickName}</Text>
         </View>
       </TouchableOpacity>
       {/* <TouchableOpacity>

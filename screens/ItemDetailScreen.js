@@ -29,7 +29,7 @@ const ItemDetailScreen = ({ route }) => {
   };
 
   const regist = () => {
-    const likeurl = `${process.env.API_IP}/like/regist/post`;
+    const likeurl = `${process.env.API_IPS}/like/regist/post`;
     console.log(likeurl)
     fetch(`${likeurl}?memberId=${params.memberId}&postId=${params.postId}`)
       .then(response => {
@@ -76,7 +76,7 @@ const ItemDetailScreen = ({ route }) => {
   )
 
   useEffect(() => {
-    const url = process.env.API_IP + '/post/view'
+    const url = process.env.API_IPS + '/post/view'
     console.log(url)
     const fetchData = async () => {
       try {
