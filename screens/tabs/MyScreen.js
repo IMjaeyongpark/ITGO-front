@@ -50,6 +50,7 @@ const MyScreen = ({ nav }) => {
           <Text style={{ fontSize: 20, marginLeft: 40 }}>위치 설정</Text>
         </View>
       </TouchableOpacity> */}
+      
 
       <TouchableOpacity onPress={() => nav.navigate('ReGeolocationScreen')}>
         <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 30 }}>

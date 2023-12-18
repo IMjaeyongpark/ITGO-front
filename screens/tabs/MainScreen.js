@@ -5,6 +5,7 @@ import TopNav from './TopNav'
 // MainScreen 컴포넌트 
 const MainScreen = ({ nav }) => {
 
+
   const par = {
     memberId: 1,
     page: 0,

@@ -5,6 +5,7 @@ import axios from 'axios';
 
 // MainScreen 컴포넌트
 const CategoryScreen = ({ nav }) => {
+    
 
     const url = process.env.API_IP + '/device/find/category'
     console.log(url)
@@ -13,7 +14,9 @@ const CategoryScreen = ({ nav }) => {
     const [lg, setLg] = useState([]);
     const [etc, setEtc] = useState([]);
 
+
     const [tmpdata, setTmpData] = useState([]);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -48,6 +51,7 @@ const CategoryScreen = ({ nav }) => {
 
         fetchData(); // useEffect 안에서 비동기 함수 호출
     }, []); // 빈 배열은 컴포넌트가 마운트될 때 한 번만 실행
+
 
 
     return (
