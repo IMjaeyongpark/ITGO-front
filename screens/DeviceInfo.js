@@ -8,6 +8,7 @@ import axios from 'axios';
 // MainScreen 컴포넌트
 const DeviceInfo = ({ route }) => {
 
+
     const [data1, setData1] = useState(null)
 
     const params = {
@@ -21,6 +22,7 @@ const DeviceInfo = ({ route }) => {
             try {
                 const response = await axios.get(url, { params });
                 setData1(response.data.info)
+                console.log(data1)
 
             } catch (error) {
                 console.error('데이터를 가져오는 중 오류 발생:', error);
@@ -39,18 +41,21 @@ const DeviceInfo = ({ route }) => {
 
     return (
         <View style={{ flex: 1, backgroundColor: 'white' }}>
-            {(data1 != null) ? (<><View style={{
+            <View style={{
                 width: '100%', height: '13.6%', borderBottomColor: '#C9C3C3',
                 borderBottomWidth: 0.8, flexDirection: 'row', backgroundColor: "#3454CD", alignItems: "center"
             }}>
                 <TouchableOpacity style={{ marginLeft: '5%', marginTop: '10%' }} onPress={backStack}>
                     <AntDesign name="left" size={35} color="white" />
                 </TouchableOpacity>
-
+                <View style={{alignItems: "center",backgroundColor:'black'}}>
+                    <Text>비교하기</Text>
+                </View>
             </View>
+            {(data1 != null) ? (<>
 
-                <ScrollView style={{ flex: 1 }}>
-                    <View style={{ flex: 1, }}>
+                <ScrollView>
+                    <View style={{width:'100%'}}>
                         <View style={styles.row}>
                             <View style={styles.inlist, {
                                 width: '100%',
@@ -61,7 +66,7 @@ const DeviceInfo = ({ route }) => {
 
                         </View>
                         <View style={styles.row}>
-                            <View style={styles.inlist}>
+                            <View style={styles.info}>
                                 <Image source={{ uri: data1['image'] }} style={{ width: '80%', aspectRatio: 1, borderRadius: "10%", marginTop: 20 }} />
                             </View>
 
@@ -329,19 +334,21 @@ const styles = StyleSheet.create({
     inlist: {
         width: '50%',
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        borderLeftColor:'#C9C3C3',
+        borderLeftWidth:0.8
+
     },
     textFont: {
         fontSize: 17,
         marginTop: 20,
         fontWeight: "500",
-        alignItems: "center"
+        
+        alignItems: "center",
     },
     info: {
         width: '50%',
         alignItems: "center",
-        borderRightColor: '#C9C3C3',
-        borderRightWidth: 0.8,
         justifyContent: "center"
     }
 });

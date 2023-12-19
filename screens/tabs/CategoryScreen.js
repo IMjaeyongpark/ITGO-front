@@ -8,6 +8,7 @@ const CategoryScreen = ({ nav }) => {
     
 
     const url = process.env.API_IP + '/device/find/category'
+
     console.log(url)
     const [sam, setSam] = useState([]);
     const [apple, setApple] = useState([]);
@@ -47,6 +48,7 @@ const CategoryScreen = ({ nav }) => {
             } catch (error) {
                 console.error('데이터를 가져오는 중 오류 발생:', error);
             }
+            
         };
 
         fetchData(); // useEffect 안에서 비동기 함수 호출

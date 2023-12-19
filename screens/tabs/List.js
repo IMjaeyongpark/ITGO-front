@@ -49,6 +49,7 @@ const List = (props) => {
                 console.error('데이터를 가져오는 중 오류 발생:', error);
             }
         };
+        
 
 
         fetchData(); // useEffect 안에서 비동기 함수 호출
