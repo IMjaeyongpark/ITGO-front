@@ -17,6 +17,7 @@ import ReGeolocationScreen from './screens/ReGeolocationScreen';
 import NotificationKeywordSettingScreen from './screens/NotificationKeywordSettingScreen';
 import CategoryResult from './screens/CategoryResult'
 import DeviceInfo from './screens/DeviceInfo';
+import DeviceCompare from './screens/DeviceCompare';
 
 const Stack = createStackNavigator();
 
@@ -42,6 +43,7 @@ const App = () => {
         <Stack.Screen name="NotificationScreen" component={NotificationScreen} />
         <Stack.Screen name="CategoryResult" component={CategoryResult} />
         <Stack.Screen name="DeviceInfo" component={DeviceInfo} />
+        <Stack.Screen name="DeviceCompare" component={DeviceCompare} />
         
       </Stack.Navigator>
     </NavigationContainer>

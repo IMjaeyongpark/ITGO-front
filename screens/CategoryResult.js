@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, TouchableOpacity, Text, View, Image, ScrollView, SafeAreaView } from 'react-native';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
-
 import { Ionicons, AntDesign, Feather } from '@expo/vector-icons';
+
 
 // MainScreen 컴포넌트
 const CategoryResult = ({ route }) => {

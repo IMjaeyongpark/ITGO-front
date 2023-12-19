@@ -11,7 +11,6 @@ import { saveDataToStorage, loadDataFromStorage } from '../storage/AsyncStorageU
 const NotificationKeywordSettingScreen = () => {
     const navigation = useNavigation();
 
-
     const [text, setText] = useState('')
     const [searchHistory,setSearchHistory] = useState(['아이폰 15', '아이폰 15 맥스', "search"])
     const [searchGeo, setSearchGeo] = useState([
@@ -24,21 +23,20 @@ const NotificationKeywordSettingScreen = () => {
     },[])
 
 
-    // 알림 받을 동네 넘겨주기 
+    // 알림 받을 동네 넘겨주기 (아직 미완성)
     const geolocationPost = async () => {
-        const data = {
-            memberId:1,
-            page: 1,
-            size:10
-        };
-
-        try {
-            const response = await axios.post(process.env.API_IPSS+'/notification/', data);
-            console.log(response.data);
-            // setSearchHistory(response.data)
-        } catch (error) {
-            console.error(error);
-        }
+        // const data = await loadDataFromStorage('searchGeo');
+        // console.log(data.isSelected);
+        // const data = '송악면';
+        // try {
+        //     const response = await axios.
+        //     get(`${process.env.API_IP}/like/find/location/by/keyword?keyword=${data}`);
+            
+        //     console.log("ㅇㅇㅇ",response.data);
+        //     // setSearchHistory(response.data)
+        // } catch (error) {
+        //     console.error(error);
+        // }
     }
     // 알림 받을 키워드 등록  api
     const keywordPost = async (keyword) => {
@@ -48,7 +46,7 @@ const NotificationKeywordSettingScreen = () => {
         };
 
         try {
-            const response = await axios.get(process.env.API_IPSS + '/like/regist/device', {
+            const response = await axios.get(process.env.API_IP + '/like/regist/device', {
                 params: data
             });
              console.log(response.data);
@@ -64,7 +62,7 @@ const NotificationKeywordSettingScreen = () => {
         };
 
         try {
-            const response = await axios.post(process.env.API_IPSS+'/notification/delete', data);
+            const response = await axios.post(process.env.API_IP+'/notification/delete', data);
             console.log(response.data);
         } catch (error) {
             console.error(error);
@@ -77,7 +75,7 @@ const NotificationKeywordSettingScreen = () => {
         };
 
         try {
-            const response = await axios.post(process.env.API_IPSS+'/notification/delete/all', data);
+            const response = await axios.post(process.env.API_IP+'/notification/delete/all', data);
             console.log(response.data);
         } catch (error) {
             console.error(error);
@@ -123,7 +121,7 @@ const NotificationKeywordSettingScreen = () => {
         }
       };
     //체크박스 선택
-    const toggleLocationSelection = (index) => {
+    const toggleLocationSelection = async(index) => {
         const updatedLocations = [...searchGeo];
         updatedLocations[index].isSelected = !updatedLocations[index].isSelected;
         setSearchGeo(updatedLocations);
@@ -133,6 +131,25 @@ const NotificationKeywordSettingScreen = () => {
 
         // AsyncStorage에 데이터가 들어왔는지 확인하는 콘솔 출력
         checkAsyncStorage('searchGeo');
+        // geolocationPost()
+        // const asan = '656ee0a6669cda7d916a05d6'
+        // const yongin = '656ee19e669cda7d916a05d7'
+        // const data ={
+        //     memberId: 2,
+        //     locationId: '656ee19e669cda7d916a05d7'
+        // }
+        // try {
+        //     console.log(`${process.env.API_IP}/like/regist/location?memberId=${data.memberId}&locationId=${data.locationId}`
+        //     );
+        //     const response = await axios.
+        //     get(`${process.env.API_IP}/like/regist/location?memberId=${data.memberId}&locationId=${data.locationId}`
+        //     );
+            
+        //     console.log("regist",response.data);
+        //     // setSearchHistory(response.data)
+        // } catch (error) {
+        //     console.error(error);
+        // }
     }
 
     const checkAsyncStorage = async (key) => {

@@ -12,6 +12,7 @@ const LikeList = (props) => {
 
     const params = props.par
     
+    
 
     console.log(params)
 
@@ -39,7 +40,7 @@ const LikeList = (props) => {
                 return {
                     "Image": tmp,
                     "title": v.title,
-                    "time": "배방읍 1시간 전",
+                    "time":  v.location.street,
                     "price": v.price,
                     "where": v.memberName,
                     "like": v.isLike,

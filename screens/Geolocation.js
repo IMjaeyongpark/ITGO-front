@@ -17,8 +17,10 @@ const Geolocation = () => {
   const [coordinate_X,setCoordinate_X] = useState(null);
   const [coordinate_Y,setCoordinate_Y] = useState(null);
   const [text,setText] = useState('');
-  const [autogeolocationName,setAutoGeolocationName]= useState("");
-
+  const [autogeolocationName,setAutoGeolocationName]= useState("지역 찾는중");
+  const [zone_no,setZone_no] = useState(null);
+  const [city,setCity] = useState(null);
+  const [street,setStreet] = useState(null);
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -37,6 +39,13 @@ const Geolocation = () => {
     // 추가로 원하는 작업을 수행할 수 있습니다.
   }, [autogeolocationName]); // autogeolocationName이 변경될 때만 useEffect 실행
 
+  //check AsyncStorage key value loaddata.json
+  const checkAsyncStorage = async (key) => {
+    // AsyncStorage에서 데이터를 확인하여 콘솔에 출력
+    const data = await loadDataFromStorage(key);
+    console.log("ssss", data);
+    return data;
+  };
   //위치 확인창
   const goAlert = () =>{
     const displayValue = autogeolocationName || ""; // null이나 falsy한 값이라면 빈 문자열로 처리
@@ -44,19 +53,25 @@ const Geolocation = () => {
   //회원가입 
   const join = async()=>{
     try {
-      const params={
-          phone: loadDataFromStorage("member_id"),
-          name: null,
-          imgAdress:null,
-          // location:{
-          //   city:,
-          //   street:,
-          //   zipcode: null
-          // }
+      const phone = await checkAsyncStorage('phone');
+        console.log("phone", phone);
+
+        const params = {
+          phone: phone,
+          location:{
+            city:city,
+            street:street,
+            zipcode: zone_no
+          }
       }
-      const response = await axios.post(process.env.API_IPSSS+'/auth/signup', { params });
+      console.log("params",params)
+      console.log("process.env.API_IP",process.env.API_IP)
+      const response = await axios.post(process.env.API_IP+'/auth/signup', params ,
+      {
+        headers: {
+          'Content-Type': 'application/json', // JSON 형식의 데이터를 전송하고 있음을 명시
+        },});
       console.log("response.data",response.data);
-      setData(newData); // 데이터를 상태에 설정
   } catch (error) {
       console.error('데이터를 가져오는 중 오류 발생:', error);
   }
@@ -117,6 +132,11 @@ const Geolocation = () => {
       );
   
       console.log("ss",response.data.documents[0].road_address.region_1depth_name); // 응답 데이터를 출력하거나 원하는 로직을 수행하세요
+      console.log("ss",response.data.documents[0]); // 응답 데이터를 출력하거나 원하는 로직을 수행하세요
+      console.log("ss",response.data.documents[0].road_address.zone_no); // 응답 데이터를 출력하거나 원하는 로직을 수행하세요
+      setZone_no(response.data.documents[0].road_address.zone_no)
+      setCity(response.data.documents[0].road_address.region_2depth_name)
+      setStreet(response.data.documents[0].road_address.region_3depth_name)
       setAutoGeolocationName(
         response.data.documents[0].road_address.region_1depth_name+" "+
         response.data.documents[0].road_address.region_2depth_name+" "+

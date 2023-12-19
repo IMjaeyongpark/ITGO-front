@@ -7,6 +7,7 @@ import axios from 'axios';
 const CategoryScreen = ({ nav }) => {
     
 
+    
     const url = process.env.API_IP + '/device/find/category'
 
     console.log(url)

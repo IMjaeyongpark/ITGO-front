@@ -36,7 +36,7 @@ const List = (props) => {
                     return {
                         "Image": tmp,
                         "title": v.title,
-                        "time": v.location.street + " 1시간 전",
+                        "time": v.location.street,
                         "price": v.price,
                         "where": v.memberName,
                         "like": v.isLike,
@@ -48,9 +48,8 @@ const List = (props) => {
             } catch (error) {
                 console.error('데이터를 가져오는 중 오류 발생:', error);
             }
+            
         };
-        
-
 
         fetchData(); // useEffect 안에서 비동기 함수 호출
     }, []); // 빈 배열은 컴포넌트가 마운트될 때 한 번만 실행

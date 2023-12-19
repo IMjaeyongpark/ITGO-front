@@ -10,7 +10,7 @@ const MainScreen = ({ nav }) => {
     page: 0,
     size: 100,
     sortBy: 'RECENT_POST',
-  }
+      }
   const path = '/post/find/all/list'
 
   const add = (

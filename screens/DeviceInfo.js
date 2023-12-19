@@ -4,17 +4,20 @@ import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 
+import { saveDataToStorage, loadDataFromStorage } from '../storage/AsyncStorageUtil';
 
 // MainScreen 컴포넌트
 const DeviceInfo = ({ route }) => {
 
-
+    const [com, setCom] = useState('null')
     const [data1, setData1] = useState(null)
+    const [check, setCheck] = useState(false)
 
     const params = {
         'detailId': route.params.id
     }
     const url = process.env.API_IP + '/device/find/mobile/info'
+
     console.log(url)
 
     useEffect(() => {
@@ -39,6 +42,39 @@ const DeviceInfo = ({ route }) => {
         navigation.goBack()
     }
 
+    const saveCompare = () => {
+
+        if (com == null) {
+            saveDataToStorage('data1', params.detailId)
+            const t = !check
+            setCheck(t)
+        } else {
+            navigation.push('DeviceCompare', { data1: com, data2: params.detailId })
+        }
+    }
+    const deleteCompare = () => {
+        saveDataToStorage('data1', null)
+        const t = !check
+        setCheck(t)
+    }
+
+    useEffect(() => {
+        const checkAsyncStorage = async () => {
+            // AsyncStorage에서 데이터를 확인하여 콘솔에 출력
+            try {
+                const tmp = await loadDataFromStorage('data1');
+
+                console.log("------------------------------------------");
+                console.log(`AsyncStorage 확인 - 키: data1, 데이터:`, tmp);
+                setCom(tmp)
+
+
+            } catch (e) { console.log("error") }
+        }
+        checkAsyncStorage()
+
+    }, [check]);
+
     return (
         <View style={{ flex: 1, backgroundColor: 'white' }}>
             <View style={{
@@ -48,14 +84,26 @@ const DeviceInfo = ({ route }) => {
                 <TouchableOpacity style={{ marginLeft: '5%', marginTop: '10%' }} onPress={backStack}>
                     <AntDesign name="left" size={35} color="white" />
                 </TouchableOpacity>
-                <View style={{alignItems: "center",backgroundColor:'black'}}>
-                    <Text>비교하기</Text>
-                </View>
+                <TouchableOpacity onPress={saveCompare}>
+                    <View style={{ alignItems: "center", marginLeft: 210, marginTop: 40, borderRadius: '8', borderColor: '#E9E4E4', borderWidth: 1, }}>
+                        <Text style={{ fontSize: 20, color: '#E9E4E4', margin: 5, fontWeight: '500' }}>비교</Text>
+                    </View>
+                </TouchableOpacity>
+                {(com != null) ? (
+                    <TouchableOpacity onPress={deleteCompare}>
+                        <View style={{
+                            alignItems: "center",
+                            borderColor: '#E9E4E4', borderWidth: 1,
+                            marginLeft: 15, marginTop: 40, borderRadius: '8'
+                        }}>
+                            <Text style={{ fontSize: 20, color: '#E9E4E4', margin: 5, fontWeight: '500' }}>삭제</Text>
+                        </View>
+                    </TouchableOpacity>) : (<></>)}
             </View>
             {(data1 != null) ? (<>
 
                 <ScrollView>
-                    <View style={{width:'100%'}}>
+                    <View style={{ width: '100%' }}>
                         <View style={styles.row}>
                             <View style={styles.inlist, {
                                 width: '100%',
@@ -335,15 +383,15 @@ const styles = StyleSheet.create({
         width: '50%',
         alignItems: "center",
         justifyContent: "center",
-        borderLeftColor:'#C9C3C3',
-        borderLeftWidth:0.8
+        borderLeftColor: '#C9C3C3',
+        borderLeftWidth: 0.8
 
     },
     textFont: {
         fontSize: 17,
         marginTop: 20,
         fontWeight: "500",
-        
+
         alignItems: "center",
     },
     info: {
@@ -354,3 +402,4 @@ const styles = StyleSheet.create({
 });
 
 export default DeviceInfo
+

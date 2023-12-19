@@ -44,6 +44,7 @@ const ItemDetailScreen = ({ route }) => {
     setIsLike(!isLike)
   };
 
+
   const deletePost = async () => {
     const url = `${process.env.API_IP}/like/delete/post`;
     console.log(url)

@@ -3,104 +3,59 @@ import { StyleSheet, SafeAreaView, Text, View, TouchableOpacity, Image, ScrollVi
 import { Ionicons, AntDesign, Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import TMP from '../assets/tmp3.png';
+import axios from 'axios';
 
 // MainScreen 컴포넌트
-const DeviceCompare = () => {
+const DeviceCompare = ({ route }) => {
+    console.log(route.params)
 
     const navigation = useNavigation();
 
     const backStack = () => {
         navigation.goBack()
     }
-    const data1 = {
-        "modelname": "A3106",
-        "basic": {
-            "name": "아이폰15프로맥스(256GB)",
-            "manufacturer": "애플",
-            "releaseDate": "2023. 10",
-            "price": "1,892,000",
-            "OS": "iOS 17",
-            "size": "76.7 x 159.9 x 8.25",
-            "weight": "221g"
-        },
-        "screen": {
-            "screen_size": "6.7 인치",
-            "scanning_rate": "10 - 120 Hz",
-            "screen_type": "OLED",
-            "resolution": "1290 x 2796",
-            "screen_width": "71.29mm",
-            "screen_height": "154.33"
-        },
-        "chipSet": {
-            "AP": "Apple A17 Pro",
-            "CPU": "2x 3.7 GHz, 4x",
-            "CPU_core": "6개",
-            "GPU": "Apple GPU"
-        },
-        "camera": {
-            "flash": "Dual LED",
-            "photo_resolution": "8000 x 6000",
-            "image_resolution": "3840 x 2160",
-            "video_frame": "60FPS"
-        },
-        "front_camera": {
-            "front_photo_resolution": "4032 x 3024",
-            "front_image_resolution": "3840 x 2160",
-            "front_video_frame": "60FPS"
-        },
-        "battery": {
-            "battery": "4,422 mAh",
-            "type": "Li-Ion",
-            "wireless_charging": "무선충전 지원"
-        },
-        "biometric_recognition": "FaceID",
-        "image": "https://cdn.cetizen.com/CDN/review/thumb_350/8157.jpg"
-    }
+    const [data1, setData1] = useState(null)
+    const [data2, setData2] = useState(null)
 
-    const data2 = {
-        "modelname": "A3102",
-        "basic": {
-            "name": "아이폰15프로(128GB)",
-            "manufacturer": "애플",
-            "releaseDate": "2023. 10",
-            "price": "1,540,000",
-            "OS": "iOS 17",
-            "size": "70.6 x 146.6 x 8.25",
-            "weight": "187g"
-        },
-        "screen": {
-            "screen_size": "6.1 인치",
-            "scanning_rate": "10 - 120 Hz",
-            "screen_type": "OLED",
-            "resolution": "1179 x 2556",
-            "screen_width": "64.9 mm",
-            "screen_height": "140.69 mm"
-        },
-        "chipSet": {
-            "AP": "Apple A17 Pro",
-            "CPU": "2x 3.7 GHz, 4x",
-            "CPU_core": "6개 (64 비트)",
-            "GPU": "Apple GPU"
-        },
-        "camera": {
-            "flash": "Dual LED",
-            "photo_resolution": "8000 x 6000",
-            "image_resolution": "3840 x 2160",
-            "video_frame": "60 FPS "
-        },
-        "front_camera": {
-            "front_photo_resolution": "4032 x 3024",
-            "front_image_resolution": "3840 x 2160 ",
-            "front_video_frame": "60 FPS"
-        },
-        "battery": {
-            "battery": "3,274 mAh ",
-            "type": "Li-Ion ",
-            "wireless_charging": "무선충전 지원"
-        },
-        "biometric_recognition": "FaceID",
-        "image": "https://cdn.cetizen.com/CDN/review/thumb_350/8153.jpg"
-    }
+    const url = process.env.API_IP + '/device/find/mobile/info'
+    console.log(url)
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const params = {
+                    'detailId': route.params.data1
+                }
+
+                const response1 = await axios.get(url, { params });
+                setData1(response1.data.info)
+                console.log(data1)
+
+            } catch (error) {
+                console.error('데이터를 가져오는 중 오류 발생:', error);
+            }
+        };
+
+        fetchData(); // useEffect 안에서 비동기 함수 호출
+    }, []); // 빈 배열은 컴포넌트가 마운트될 때 한 번만 실행
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const params = {
+                    'detailId': route.params.data2
+                }
+
+                const response = await axios.get(url, { params });
+                setData2(response.data.info)
+                console.log(data1)
+
+            } catch (error) {
+                console.error('데이터를 가져오는 중 오류 발생:', error);
+            }
+        };
+
+        fetchData(); // useEffect 안에서 비동기 함수 호출
+    }, []); // 빈 배열은 컴포넌트가 마운트될 때 한 번만 실행
 
 
 
@@ -113,11 +68,11 @@ const DeviceCompare = () => {
                 <TouchableOpacity style={{ marginLeft: '5%', marginTop: '10%' }} onPress={backStack}>
                     <AntDesign name="left" size={35} color="white" />
                 </TouchableOpacity>
-               
+
             </View>
 
             <ScrollView style={{ flex: 1 }}>
-                <View style={{ flex: 1, }}>
+                {(data1 != null) && (data2 != null) ? (<View style={{ flex: 1, }}>
                     <View style={styles.row}>
                         <View style={styles.inlist}>
                             <Text style={{ fontSize: 20, marginTop: 20, fontWeight: "500" }}>{data1["basic"]["name"]}</Text>
@@ -160,14 +115,7 @@ const DeviceCompare = () => {
                             <Text style={styles.textFont}>￦{data2["basic"]["price"]}</Text>
                         </View>
                     </View>
-                    <View style={styles.row}>
-                        <View style={styles.inlist}>
-                            <Text style={styles.textFont}>{data1["basic"]["OS"]}</Text>
-                        </View>
-                        <View style={{ width: '50%', alignItems: "center", }}>
-                            <Text style={styles.textFont}>{data2["basic"]["OS"]}</Text>
-                        </View>
-                    </View>
+                   
 
                     <View style={styles.row}>
                         <View style={styles.inlist}>
@@ -241,34 +189,34 @@ const DeviceCompare = () => {
                     <Text style={{ fontSize: 35, marginLeft: "5%", marginTop: '5%', fontWeight: 500 }}>칩셋</Text>
                     <View style={styles.row}>
                         <View style={styles.inlist}>
-                            <Text style={styles.textFont}>{data1["chipSet"]["AP"]}</Text>
+                            <Text style={styles.textFont}>{data1["chipSet"]["ap"]}</Text>
                         </View>
                         <View style={{ width: '50%', alignItems: "center", }}>
-                            <Text style={styles.textFont}>{data2["chipSet"]["AP"]}</Text>
+                            <Text style={styles.textFont}>{data2["chipSet"]["ap"]}</Text>
                         </View>
                     </View>
                     <View style={styles.row}>
                         <View style={styles.inlist}>
-                            <Text style={styles.textFont}>{data1["chipSet"]["CPU"]}</Text>
+                            <Text style={styles.textFont}>{data1["chipSet"]["cpu"]}</Text>
                         </View>
                         <View style={{ width: '50%', alignItems: "center", }}>
-                            <Text style={styles.textFont}>{data2["chipSet"]["CPU"]}</Text>
+                            <Text style={styles.textFont}>{data2["chipSet"]["cpu"]}</Text>
                         </View>
                     </View>
                     <View style={styles.row}>
                         <View style={styles.inlist}>
-                            <Text style={styles.textFont}>{data1["chipSet"]["CPU_core"]}</Text>
+                            <Text style={styles.textFont}>{data1["chipSet"]["cpu_core"]}</Text>
                         </View>
                         <View style={{ width: '50%', alignItems: "center", }}>
-                            <Text style={styles.textFont}>{data2["chipSet"]["CPU_core"]}</Text>
+                            <Text style={styles.textFont}>{data2["chipSet"]["cpu_core"]}</Text>
                         </View>
                     </View>
                     <View style={styles.row}>
                         <View style={styles.inlist}>
-                            <Text style={styles.textFont}>{data1["chipSet"]["GPU"]}</Text>
+                            <Text style={styles.textFont}>{data1["chipSet"]["gpu"]}</Text>
                         </View>
                         <View style={{ width: '50%', alignItems: "center", }}>
-                            <Text style={styles.textFont}>{data2["chipSet"]["GPU"]}</Text>
+                            <Text style={styles.textFont}>{data2["chipSet"]["gpu"]}</Text>
                         </View>
                     </View>
 
@@ -378,7 +326,7 @@ const DeviceCompare = () => {
                     </View>
                     <View style={{ height: 50 }} />
                 </View>
-
+                ) : (<></>)}
             </ScrollView>
         </View>
     );

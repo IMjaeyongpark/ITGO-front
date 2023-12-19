@@ -65,7 +65,12 @@ const SearchScreen = () => {
         navigation.push('SearchResultScreen', { text })
     }
 
+    const aa = ()=>{
+        navigation.push('SearchResultScreen', { text })
+    }
+
     const onPressSearchHistory = (v, index) => {
+
         const tmp1 = searchHistory.filter((value, idx) => {
             if (idx != index) {
                 return value;
@@ -76,8 +81,9 @@ const SearchScreen = () => {
         setText(v)
         saveDataToStorage('searchHistory', tmp)
         setSearchHistory(tmp)
-        navigation.push('SearchResultScreen', { text })
+        aa()
     }
+
 
 
 
