@@ -48,6 +48,7 @@ const LikeList = (props) => {
                     "nav": nav
                 }
             });
+            
               setData(newData); // 데이터를 상태에 설정
             } catch (error) {
               console.error('데이터를 가져오는 중 오류 발생:', error);

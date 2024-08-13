@@ -70,7 +70,6 @@ const DeviceCompare = ({ route }) => {
                 </TouchableOpacity>
 
             </View>
-
             <ScrollView style={{ flex: 1 }}>
                 {(data1 != null) && (data2 != null) ? (<View style={{ flex: 1, }}>
                     <View style={styles.row}>

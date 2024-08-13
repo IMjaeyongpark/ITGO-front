@@ -9,7 +9,6 @@ import { saveDataToStorage, loadDataFromStorage } from '../storage/AsyncStorageU
 const SearchResultScreen = ({ route }) => {
     const navigation = useNavigation();
 
-
     const [searchHistory, setSearchHistory] = useState([])
     
     console.log('route:' + route.params.text)

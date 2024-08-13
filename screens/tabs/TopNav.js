@@ -13,7 +13,7 @@ const TopNav = ({ nav }) => {
                     <Feather name="search" size={30} color="white" />
                 </TouchableOpacity>
             
-                <TouchableOpacity onPress={() => nav.navigate('LaptopInfo')}>
+                <TouchableOpacity>
                     <AntDesign name="bells" size={30} color="white"/>
                 </TouchableOpacity>
             </View>

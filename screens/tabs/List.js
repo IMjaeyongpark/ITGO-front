@@ -11,7 +11,7 @@ const List = (props) => {
 
     const params = props.par
 
-
+    
     console.log(params)
 
     const [data, setData] = useState([]);

@@ -48,6 +48,7 @@ const SearchScreen = () => {
         const tmp = [...searchHistory]
         tmp.splice(idx, 1)
         setSearchHistory(tmp)
+        saveDataToStorage('searchHistory', tmp)
     }
 
     const delAllSearchHistory = () => {
@@ -65,23 +66,25 @@ const SearchScreen = () => {
         navigation.push('SearchResultScreen', { text })
     }
 
-    const aa = ()=>{
+    const aa = () => {
         navigation.push('SearchResultScreen', { text })
     }
 
-    const onPressSearchHistory = (v, index) => {
 
-        const tmp1 = searchHistory.filter((value, idx) => {
-            if (idx != index) {
-                return value;
-            }
-        })
-        
-        const tmp = [v, ...tmp1]
-        setText(v)
+    const onPressSearchHistory = async (v, index) => {
+
+
+        console.log(v)
+        await setText(v)
+
+
+        deleteSearchHistory(index)
+
+        const tmp = [text, ...searchHistory]
         saveDataToStorage('searchHistory', tmp)
         setSearchHistory(tmp)
-        aa()
+        console.log(text)
+        navigation.push('SearchResultScreen', { text })
     }
 
 

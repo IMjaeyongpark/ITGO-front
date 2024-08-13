@@ -100,10 +100,7 @@ const PhoneNumber = () => {
                 인증번호가 오지 않나요?
               </Text>
             </TouchableOpacity>
-            <Button
-            title="Geolocation"
-            onPress={() => navigation.navigate('Geolocation')}
-          />
+            
           </View>
       </View>
     </TouchableWithoutFeedback>

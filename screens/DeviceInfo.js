@@ -101,7 +101,6 @@ const DeviceInfo = ({ route }) => {
                     </TouchableOpacity>) : (<></>)}
             </View>
             {(data1 != null) ? (<>
-
                 <ScrollView>
                     <View style={{ width: '100%' }}>
                         <View style={styles.row}>

@@ -154,6 +154,7 @@ const styles = StyleSheet.create({
     //marginTop: "2%",
   },
   diego: {
+    
     backgroundColor: "#3454CD",
     width: "75%",
     height: "50%",

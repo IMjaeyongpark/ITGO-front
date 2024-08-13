@@ -12,7 +12,6 @@ const CategoryResult = ({ route }) => {
 
     const [data, setData] = useState([])
 
-
     const url = process.env.API_IP + '/device/find/list/byCategory'
     const params = {
         'page': 0,
